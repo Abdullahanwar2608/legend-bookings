@@ -5,8 +5,21 @@ import { SERVICES, TIME_SLOTS, saveBooking, isSlotTaken, type Booking } from "@/
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Calendar } from "@/components/ui/calendar";
 import { Check, ChevronLeft, Calendar as CalIcon, Clock, Scissors, User } from "lucide-react";
 import { toast } from "sonner";
+
+function formatDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+function prettyDate(iso: string): string {
+  if (!iso) return "";
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+}
 
 const searchSchema = z.object({ service: z.string().optional() });
 
