@@ -122,31 +122,52 @@ function BookPage() {
             {step === 2 && (
               <div className="space-y-6 animate-in fade-in duration-300">
                 <h2 className="text-xl font-semibold flex items-center gap-2"><CalIcon className="h-5 w-5 text-gold" /> Pick a date & time</h2>
-                <div>
-                  <label className="text-sm text-muted-foreground mb-2 block">Date</label>
-                  <Input type="date" min={today} max={maxDate} value={date} onChange={(e) => { setDate(e.target.value); setTime(""); }} />
-                </div>
-                {date && (
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-sm text-muted-foreground mb-2 block flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> Available times</label>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-                      {TIME_SLOTS.map((t) => {
-                        const taken = isSlotTaken(date, t);
-                        return (
-                          <button
-                            key={t}
-                            disabled={taken}
-                            onClick={() => setTime(t)}
-                            className={`py-2.5 rounded-lg text-sm font-medium border transition-all ${
-                              taken ? "border-border/30 text-muted-foreground/40 line-through cursor-not-allowed" :
-                              time === t ? "border-gold bg-gold text-gold-foreground" : "border-border hover:border-gold/50"
-                            }`}
-                          >{t}</button>
-                        );
-                      })}
+                    <label className="text-sm text-muted-foreground mb-2 block">Select a date</label>
+                    <div className="rounded-xl border border-border bg-background/40 p-2 flex justify-center">
+                      <Calendar
+                        mode="single"
+                        selected={selectedDateObj}
+                        onSelect={(d) => {
+                          if (!d) { setDate(""); setTime(""); return; }
+                          setDate(formatDate(d));
+                          setTime("");
+                        }}
+                        disabled={(d) => d < today || d > maxDate}
+                        className="pointer-events-auto"
+                      />
                     </div>
                   </div>
-                )}
+                  <div>
+                    <label className="text-sm text-muted-foreground mb-2 flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> Available times</label>
+                    {!date ? (
+                      <div className="rounded-xl border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
+                        Pick a date to see open slots.
+                      </div>
+                    ) : (
+                      <>
+                        <p className="text-xs text-gold mb-3">{prettyDate(date)}</p>
+                        <div className="grid grid-cols-3 gap-2">
+                          {TIME_SLOTS.map((t) => {
+                            const taken = isSlotTaken(date, t);
+                            return (
+                              <button
+                                key={t}
+                                disabled={taken}
+                                onClick={() => setTime(t)}
+                                className={`py-2.5 rounded-lg text-sm font-medium border transition-all ${
+                                  taken ? "border-border/30 text-muted-foreground/40 line-through cursor-not-allowed" :
+                                  time === t ? "border-gold bg-gold text-gold-foreground" : "border-border hover:border-gold/50"
+                                }`}
+                              >{t}</button>
+                            );
+                          })}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
                 <div className="flex justify-between pt-4">
                   <Button variant="ghost" onClick={() => setStep(1)}><ChevronLeft className="h-4 w-4 mr-1" /> Back</Button>
                   <Button disabled={!date || !time} onClick={() => setStep(3)} className="bg-gradient-gold text-gold-foreground hover:opacity-90">Continue</Button>
