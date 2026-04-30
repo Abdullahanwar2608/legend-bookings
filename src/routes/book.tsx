@@ -45,11 +45,13 @@ function BookPage() {
   const [confirmedId, setConfirmedId] = useState<string | null>(null);
 
   const service = SERVICES.find((s) => s.id === serviceId);
-  const today = new Date().toISOString().split("T")[0];
-  const maxDate = useMemo(() => {
-    const d = new Date(); d.setDate(d.getDate() + 60);
-    return d.toISOString().split("T")[0];
-  }, []);
+  const today = useMemo(() => { const d = new Date(); d.setHours(0,0,0,0); return d; }, []);
+  const maxDate = useMemo(() => { const d = new Date(); d.setDate(d.getDate() + 60); d.setHours(0,0,0,0); return d; }, []);
+  const selectedDateObj = useMemo(() => {
+    if (!date) return undefined;
+    const [y, m, d] = date.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }, [date]);
 
   const handleConfirm = () => {
     const schema = z.object({
