@@ -21,6 +21,7 @@ function formatDate(d: Date): string {
   const day = String(d.getDate()).padStart(2, "0");
   return `${y}-${m}-${day}`;
 }
+
 function prettyDate(iso: string): string {
   if (!iso) return "";
   const [y, m, d] = iso.split("-").map(Number);
@@ -70,25 +71,11 @@ function BookPage() {
   const today = useMemo(() => { const d = new Date(); d.setHours(0,0,0,0); return d; }, []);
   const maxDate = useMemo(() => { const d = new Date(); d.setDate(d.getDate() + 60); d.setHours(0,0,0,0); return d; }, []);
 
+  // Defined ONLY ONCE
   const selectedDateObj = useMemo(() => {
     if (!date) return undefined;
     const [y, m, d] = date.split("-").map(Number);
     return new Date(y, m - 1, d);
-  }, [date]);
-
-  const filteredTimeSlots = useMemo(() => {
-    const now = new Date();
-    const todayStr = formatDate(now);
-
-    if (date !== todayStr) return TIME_SLOTS;
-
-    const currentHour = now.getHours();
-    const currentMin = now.getMinutes();
-
-    return TIME_SLOTS.filter(slot => {
-      const [slotHour, slotMin] = slot.split(':').map(Number);
-      return slotHour > currentHour || (slotHour === currentHour && slotMin > currentMin);
-    });
   }, [date]);
 
   const handleConfirm = async () => {
@@ -102,6 +89,7 @@ function BookPage() {
       return;
     }
     if (!service || !date || !time) return;
+    
     setSubmitting(true);
     try {
       const booking = await createBooking({
@@ -198,7 +186,7 @@ function BookPage() {
                       <>
                         <p className="text-xs text-gold mb-3">{prettyDate(date)}</p>
                         <div className="grid grid-cols-3 gap-2">
-                          {filteredTimeSlots.map((t) => {
+                          {TIME_SLOTS.map((t) => {
                             const isTaken = taken.includes(t);
                             return (
                               <button
