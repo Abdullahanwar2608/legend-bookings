@@ -75,6 +75,32 @@ function BookPage() {
     return new Date(y, m - 1, d);
   }, [date]);
 
+  const selectedDateObj = useMemo(() => {
+    if (!date) return undefined;
+    const [y, m, d] = date.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }, [date]);
+
+  const filteredTimeSlots = useMemo(() => {
+    const now = new Date();
+    const todayStr = formatDate(now);
+    
+    // If it's a future date, show all slots
+    if (date !== todayStr) return TIME_SLOTS;
+
+    // If it's today, filter slots by current time
+    const currentHour = now.getHours();
+    const currentMin = now.getMinutes();
+
+    return TIME_SLOTS.filter(slot => {
+      const [slotHour, slotMin] = slot.split(':').map(Number);
+      // Return true if the slot hour is in the future 
+      // or if it's the current hour but the minute is in the future
+      return slotHour > currentHour || (slotHour === currentHour && slotMin > currentMin);
+    });
+  }, [date]);
+
+  
   const handleConfirm = async () => {
     const schema = z.object({
       name: z.string().trim().min(2, "Name too short").max(60),
@@ -182,7 +208,7 @@ function BookPage() {
                       <>
                         <p className="text-xs text-gold mb-3">{prettyDate(date)}</p>
                         <div className="grid grid-cols-3 gap-2">
-                          {TIME_SLOTS.map((t) => {
+                          {filteredTimeSlots.map((t) => {
                             const isTaken = taken.includes(t);
                             return (
                               <button
