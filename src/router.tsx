@@ -1,6 +1,7 @@
 import { createRouter, useRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
+// 1. Error component stays at the top level
 function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
@@ -54,14 +55,18 @@ function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => vo
   );
 }
 
-export const getRouter = () => {
- export const router = createRouter({
-    routeTree,
-    context: {},
-    scrollRestoration: true,
-    defaultPreloadStaleTime: 0,
-    defaultErrorComponent: DefaultErrorComponent,
-  });
+// 2. Define and Export the router singleton directly
+export const router = createRouter({
+  routeTree,
+  context: {},
+  scrollRestoration: true,
+  defaultPreloadStaleTime: 0,
+  defaultErrorComponent: DefaultErrorComponent,
+});
 
-  return router;
-};
+// 3. Register the router for maximum type safety
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router
+  }
+}
