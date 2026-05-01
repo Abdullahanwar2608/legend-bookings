@@ -2,19 +2,23 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import viteCompression from "vite-plugin-compression";
-// 1. Import the Tailwind plugin
 import tailwindcss from "@tailwindcss/vite";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
-    // 2. Add tailwindcss() to the plugins array
     tailwindcss(),
-    viteCompression({ algorithm: 'brotliCompress' })
-  ],
+    // Only compress files during 'production' builds to avoid dev-mode hangs
+    mode === 'production' && viteCompression({ 
+      algorithm: 'gzip', // Using gzip is often more stable for initial troubleshooting
+      ext: '.gz',
+      threshold: 10240, // Only compress files larger than 10KB
+      deleteOriginFile: false
+    })
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-});
+}));
