@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import {
   TIME_SLOTS,
@@ -64,19 +64,40 @@ function BookPage() {
 
   useEffect(() => {
     if (!date) { setTaken([]); return; }
-    fetchTakenSlots(date).then(setTaken).catch(() => setTaken([]));
+    // AbortController prevents a slow response for an old date from
+    // overwriting the state after the user has already picked a new date.
+    let cancelled = false;
+    fetchTakenSlots(date)
+      .then((slots) => { if (!cancelled) setTaken(slots); })
+      .catch(() => { if (!cancelled) setTaken([]); });
+    return () => { cancelled = true; };
   }, [date]);
 
   const service = services.find((s) => s.id === serviceId);
   const today = useMemo(() => { const d = new Date(); d.setHours(0,0,0,0); return d; }, []);
   const maxDate = useMemo(() => { const d = new Date(); d.setDate(d.getDate() + 60); d.setHours(0,0,0,0); return d; }, []);
 
-  // Defined ONLY ONCE
+  // Stable date object — only recomputed when the date string changes
   const selectedDateObj = useMemo(() => {
     if (!date) return undefined;
     const [y, m, d] = date.split("-").map(Number);
     return new Date(y, m - 1, d);
   }, [date]);
+
+  // useCallback keeps these function references stable across renders.
+  // Without this, the Calendar (DayPicker) receives a new function prop on
+  // every render, forcing a full internal re-render which can create a
+  // render → state-update → re-render loop with certain shadcn/ui versions.
+  const handleDateSelect = useCallback((d: Date | undefined) => {
+    if (!d) { setDate(""); setTime(""); return; }
+    setDate(formatDate(d));
+    setTime("");
+  }, []);
+
+  const isDateDisabled = useCallback(
+    (d: Date) => d < today || d > maxDate,
+    [today, maxDate],
+  );
 
   const handleConfirm = async () => {
     const schema = z.object({
@@ -166,12 +187,8 @@ function BookPage() {
                       <Calendar
                         mode="single"
                         selected={selectedDateObj}
-                        onSelect={(d) => {
-                          if (!d) { setDate(""); setTime(""); return; }
-                          setDate(formatDate(d));
-                          setTime("");
-                        }}
-                        disabled={(d) => d < today || d > maxDate}
+                        onSelect={handleDateSelect}
+                        disabled={isDateDisabled}
                         className="pointer-events-auto"
                       />
                     </div>

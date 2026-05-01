@@ -60,7 +60,10 @@ export const router = createRouter({
   routeTree,
   context: {},
   scrollRestoration: true,
-  defaultPreloadStaleTime: 0,
+  // 0 = "always stale" → router refetches preloaded data on every interaction,
+  // which combined with scrollRestoration caused a cascading re-render loop.
+  // 30 s is the TanStack Router recommended default for most apps.
+  defaultPreloadStaleTime: 30_000,
   defaultErrorComponent: DefaultErrorComponent,
 });
 
