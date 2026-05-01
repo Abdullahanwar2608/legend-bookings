@@ -98,7 +98,8 @@ function BookPage() {
       .then((slots) => {
         if (!cancelled) setTaken(slots);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("[fetchTakenSlots]", err);
         if (!cancelled) setTaken([]);
       });
     return () => {
