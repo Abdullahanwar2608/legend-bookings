@@ -165,9 +165,14 @@ function Dashboard() {
   const [tab, setTab] = useState<"appointments" | "services">("appointments");
 
   const refresh = async () => {
-    const [b, s] = await Promise.all([fetchUpcomingBookings(), fetchAllServices()]);
-    setBookings(b);
-    setServices(s);
+    try {
+      const [b, s] = await Promise.all([fetchUpcomingBookings(), fetchAllServices()]);
+      setBookings(b);
+      setServices(s);
+    } catch (e) {
+      console.error("[Admin Refresh]", e);
+      toast.error("Failed to load dashboard data. Please refresh the page.");
+    }
   };
 
   useEffect(() => {

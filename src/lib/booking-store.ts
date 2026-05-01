@@ -109,7 +109,8 @@ export async function fetchUpcomingBookings(): Promise<Booking[]> {
     .select("*")
     .gte("booking_date", today)
     .order("booking_date", { ascending: true })
-    .order("booking_time", { ascending: true });
+    .order("booking_time", { ascending: true })
+    .limit(500); // 🚨 SRE Fix: Prevents Unbounded Query / OOM Crashes
   if (error) throw error;
   return (data || []).map((b) => ({ ...b, price: Number(b.price) })) as Booking[];
 }
