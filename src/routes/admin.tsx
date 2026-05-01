@@ -27,7 +27,9 @@ import {
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin — Legend Barber Shop" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({
+    meta: [{ title: "Admin — Legend Barber Shop" }, { name: "robots", content: "noindex" }],
+  }),
   component: AdminPage,
 });
 
@@ -64,11 +66,14 @@ function LoginForm() {
         toast.success("Signed in");
       } else {
         const { error } = await supabase.auth.signUp({
-          email, password,
+          email,
+          password,
           options: { emailRedirectTo: `${window.location.origin}/admin` },
         });
         if (error) throw error;
-        toast.success("Account created. If admin access is needed, ask the owner to grant your role.");
+        toast.success(
+          "Account created. If admin access is needed, ask the owner to grant your role.",
+        );
       }
     } catch (err: unknown) {
       toast.error(err instanceof Error ? err.message : "Authentication failed");
@@ -79,18 +84,52 @@ function LoginForm() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
-      <form onSubmit={onSubmit} className="w-full max-w-sm bg-card border border-border rounded-2xl p-8 shadow-elegant">
-        <Link to="/" className="text-xs text-muted-foreground hover:text-gold inline-flex items-center gap-1 mb-4"><ArrowLeft className="h-3 w-3" /> Site</Link>
+      <form
+        onSubmit={onSubmit}
+        className="w-full max-w-sm bg-card border border-border rounded-2xl p-8 shadow-elegant"
+      >
+        <Link
+          to="/"
+          className="text-xs text-muted-foreground hover:text-gold inline-flex items-center gap-1 mb-4"
+        >
+          <ArrowLeft className="h-3 w-3" /> Site
+        </Link>
         <h1 className="text-2xl font-bold mb-2">Admin {mode === "signin" ? "Login" : "Sign Up"}</h1>
         <p className="text-sm text-muted-foreground mb-6">
-          {mode === "signin" ? "Sign in to manage bookings and services." : "Create an account, then have an owner grant admin access."}
+          {mode === "signin"
+            ? "Sign in to manage bookings and services."
+            : "Create an account, then have an owner grant admin access."}
         </p>
         <div className="space-y-3">
-          <Input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@example.com" autoFocus />
-          <Input type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+          <Input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="email@example.com"
+            autoFocus
+          />
+          <Input
+            type="password"
+            required
+            minLength={6}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
         </div>
-        <Button type="submit" disabled={submitting} className="w-full mt-4 bg-gradient-gold text-gold-foreground hover:opacity-90">
-          {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : mode === "signin" ? "Sign In" : "Create Account"}
+        <Button
+          type="submit"
+          disabled={submitting}
+          className="w-full mt-4 bg-gradient-gold text-gold-foreground hover:opacity-90"
+        >
+          {submitting ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : mode === "signin" ? (
+            "Sign In"
+          ) : (
+            "Create Account"
+          )}
         </Button>
         <button
           type="button"
@@ -131,7 +170,9 @@ function Dashboard() {
     setServices(s);
   };
 
-  useEffect(() => { refresh(); }, []);
+  useEffect(() => {
+    refresh();
+  }, []);
 
   const revenue = bookings.reduce((sum, b) => sum + b.price, 0);
 
@@ -140,8 +181,15 @@ function Dashboard() {
       <div className="container mx-auto max-w-6xl">
         <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
           <div>
-            <Link to="/" className="text-sm text-muted-foreground hover:text-gold inline-flex items-center gap-1 mb-2"><ArrowLeft className="h-3 w-3" /> Site</Link>
-            <h1 className="text-3xl md:text-4xl font-bold">Admin <span className="text-gradient-gold">Dashboard</span></h1>
+            <Link
+              to="/"
+              className="text-sm text-muted-foreground hover:text-gold inline-flex items-center gap-1 mb-2"
+            >
+              <ArrowLeft className="h-3 w-3" /> Site
+            </Link>
+            <h1 className="text-3xl md:text-4xl font-bold">
+              Admin <span className="text-gradient-gold">Dashboard</span>
+            </h1>
           </div>
           <Button variant="outline" onClick={() => supabase.auth.signOut()}>
             <LogOut className="h-4 w-4 mr-2" /> Logout
@@ -150,13 +198,21 @@ function Dashboard() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <Stat icon={Calendar} label="Upcoming" value={bookings.length.toString()} />
-          <Stat icon={Users} label="Services" value={services.filter((s) => s.active).length.toString()} />
+          <Stat
+            icon={Users}
+            label="Services"
+            value={services.filter((s) => s.active).length.toString()}
+          />
           <Stat icon={DollarSign} label="Pending revenue" value={`$${revenue}`} />
         </div>
 
         <div className="flex gap-2 mb-6 border-b border-border">
-          <TabBtn active={tab === "appointments"} onClick={() => setTab("appointments")}>Appointments</TabBtn>
-          <TabBtn active={tab === "services"} onClick={() => setTab("services")}>Services</TabBtn>
+          <TabBtn active={tab === "appointments"} onClick={() => setTab("appointments")}>
+            Appointments
+          </TabBtn>
+          <TabBtn active={tab === "services"} onClick={() => setTab("services")}>
+            Services
+          </TabBtn>
         </div>
 
         {tab === "appointments" ? (
@@ -169,7 +225,15 @@ function Dashboard() {
   );
 }
 
-function TabBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function TabBtn({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <button
       onClick={onClick}
@@ -185,13 +249,18 @@ function BookingsTable({ bookings, onChange }: { bookings: Booking[]; onChange: 
     if (!confirm("Cancel this appointment?")) return;
     const { error } = await supabase.from("bookings").delete().eq("id", id);
     if (error) toast.error(error.message);
-    else { toast.success("Appointment cancelled"); onChange(); }
+    else {
+      toast.success("Appointment cancelled");
+      onChange();
+    }
   };
 
   return (
     <div className="bg-card border border-border rounded-2xl shadow-elegant overflow-hidden">
       <div className="p-6 border-b border-border">
-        <h2 className="font-semibold flex items-center gap-2"><Scissors className="h-4 w-4 text-gold" /> Upcoming Appointments</h2>
+        <h2 className="font-semibold flex items-center gap-2">
+          <Scissors className="h-4 w-4 text-gold" /> Upcoming Appointments
+        </h2>
       </div>
       {bookings.length === 0 ? (
         <div className="p-12 text-center text-muted-foreground">No upcoming appointments.</div>
@@ -219,7 +288,11 @@ function BookingsTable({ bookings, onChange }: { bookings: Booking[]; onChange: 
                   <td className="px-6 py-4">{b.service_name}</td>
                   <td className="px-6 py-4 text-right font-semibold">${b.price}</td>
                   <td className="px-6 py-4 text-right">
-                    <button onClick={() => remove(b.id)} className="text-muted-foreground hover:text-destructive p-1" aria-label="Cancel">
+                    <button
+                      onClick={() => remove(b.id)}
+                      className="text-muted-foreground hover:text-destructive p-1"
+                      aria-label="Cancel"
+                    >
                       <Trash2 className="h-4 w-4" />
                     </button>
                   </td>
@@ -233,7 +306,13 @@ function BookingsTable({ bookings, onChange }: { bookings: Booking[]; onChange: 
   );
 }
 
-type ServiceForm = { name: string; price: string; duration: string; description: string; active: boolean };
+type ServiceForm = {
+  name: string;
+  price: string;
+  duration: string;
+  description: string;
+  active: boolean;
+};
 const emptyForm: ServiceForm = { name: "", price: "", duration: "", description: "", active: true };
 
 function ServicesManager({ services, onChange }: { services: Service[]; onChange: () => void }) {
@@ -244,14 +323,23 @@ function ServicesManager({ services, onChange }: { services: Service[]; onChange
     if (!confirm("Delete this service?")) return;
     const { error } = await supabase.from("services").delete().eq("id", id);
     if (error) toast.error(error.message);
-    else { toast.success("Service deleted"); onChange(); }
+    else {
+      toast.success("Service deleted");
+      onChange();
+    }
   };
 
   return (
     <div className="bg-card border border-border rounded-2xl shadow-elegant overflow-hidden">
       <div className="p-6 border-b border-border flex items-center justify-between">
-        <h2 className="font-semibold flex items-center gap-2"><Scissors className="h-4 w-4 text-gold" /> Services</h2>
-        <Button size="sm" onClick={() => setCreating(true)} className="bg-gradient-gold text-gold-foreground hover:opacity-90">
+        <h2 className="font-semibold flex items-center gap-2">
+          <Scissors className="h-4 w-4 text-gold" /> Services
+        </h2>
+        <Button
+          size="sm"
+          onClick={() => setCreating(true)}
+          className="bg-gradient-gold text-gold-foreground hover:opacity-90"
+        >
           <Plus className="h-4 w-4 mr-1" /> New
         </Button>
       </div>
@@ -266,13 +354,29 @@ function ServicesManager({ services, onChange }: { services: Service[]; onChange
                   <h3 className="font-semibold">{s.name}</h3>
                   <span className="text-gold font-bold">${s.price}</span>
                   <span className="text-xs text-muted-foreground">· {s.duration}</span>
-                  {!s.active && <span className="text-[10px] uppercase px-1.5 py-0.5 rounded bg-muted text-muted-foreground">Inactive</span>}
+                  {!s.active && (
+                    <span className="text-[10px] uppercase px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
+                      Inactive
+                    </span>
+                  )}
                 </div>
                 <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{s.description}</p>
               </div>
               <div className="flex gap-1">
-                <button onClick={() => setEditing(s)} className="text-muted-foreground hover:text-gold p-2" aria-label="Edit"><Pencil className="h-4 w-4" /></button>
-                <button onClick={() => remove(s.id)} className="text-muted-foreground hover:text-destructive p-2" aria-label="Delete"><Trash2 className="h-4 w-4" /></button>
+                <button
+                  onClick={() => setEditing(s)}
+                  className="text-muted-foreground hover:text-gold p-2"
+                  aria-label="Edit"
+                >
+                  <Pencil className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={() => remove(s.id)}
+                  className="text-muted-foreground hover:text-destructive p-2"
+                  aria-label="Delete"
+                >
+                  <Trash2 className="h-4 w-4" />
+                </button>
               </div>
             </div>
           ))}
@@ -281,14 +385,21 @@ function ServicesManager({ services, onChange }: { services: Service[]; onChange
 
       {(creating || editing) && (
         <ServiceModal
-          initial={editing ? {
-            name: editing.name,
-            price: String(editing.price),
-            duration: editing.duration,
-            description: editing.description,
-            active: editing.active ?? true,
-          } : emptyForm}
-          onClose={() => { setCreating(false); setEditing(null); }}
+          initial={
+            editing
+              ? {
+                  name: editing.name,
+                  price: String(editing.price),
+                  duration: editing.duration,
+                  description: editing.description,
+                  active: editing.active ?? true,
+                }
+              : emptyForm
+          }
+          onClose={() => {
+            setCreating(false);
+            setEditing(null);
+          }}
           onSave={async (form) => {
             const payload = {
               name: form.name.trim(),
@@ -300,9 +411,13 @@ function ServicesManager({ services, onChange }: { services: Service[]; onChange
             const { error } = editing
               ? await supabase.from("services").update(payload).eq("id", editing.id)
               : await supabase.from("services").insert(payload);
-            if (error) { toast.error(error.message); return false; }
+            if (error) {
+              toast.error(error.message);
+              return false;
+            }
             toast.success(editing ? "Service updated" : "Service created");
-            setCreating(false); setEditing(null);
+            setCreating(false);
+            setEditing(null);
             onChange();
             return true;
           }}
@@ -313,7 +428,9 @@ function ServicesManager({ services, onChange }: { services: Service[]; onChange
 }
 
 function ServiceModal({
-  initial, onClose, onSave,
+  initial,
+  onClose,
+  onSave,
 }: {
   initial: ServiceForm;
   onClose: () => void;
@@ -325,25 +442,71 @@ function ServiceModal({
   return (
     <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-card border border-border rounded-2xl shadow-elegant w-full max-w-md p-6 relative">
-        <button onClick={onClose} className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"><X className="h-4 w-4" /></button>
-        <h3 className="font-semibold text-lg mb-5">{initial === emptyForm ? "New Service" : "Edit Service"}</h3>
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
+        >
+          <X className="h-4 w-4" />
+        </button>
+        <h3 className="font-semibold text-lg mb-5">
+          {initial === emptyForm ? "New Service" : "Edit Service"}
+        </h3>
         <div className="space-y-3">
-          <Field label="Name"><Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} maxLength={80} /></Field>
+          <Field label="Name">
+            <Input
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              maxLength={80}
+            />
+          </Field>
           <div className="grid grid-cols-2 gap-3">
-            <Field label="Price ($)"><Input type="number" min="0" step="1" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} /></Field>
-            <Field label="Duration"><Input value={form.duration} onChange={(e) => setForm({ ...form, duration: e.target.value })} placeholder="45 min" maxLength={20} /></Field>
+            <Field label="Price ($)">
+              <Input
+                type="number"
+                min="0"
+                step="1"
+                value={form.price}
+                onChange={(e) => setForm({ ...form, price: e.target.value })}
+              />
+            </Field>
+            <Field label="Duration">
+              <Input
+                value={form.duration}
+                onChange={(e) => setForm({ ...form, duration: e.target.value })}
+                placeholder="45 min"
+                maxLength={20}
+              />
+            </Field>
           </div>
-          <Field label="Description"><Textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={3} maxLength={300} /></Field>
+          <Field label="Description">
+            <Textarea
+              value={form.description}
+              onChange={(e) => setForm({ ...form, description: e.target.value })}
+              rows={3}
+              maxLength={300}
+            />
+          </Field>
           <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" checked={form.active} onChange={(e) => setForm({ ...form, active: e.target.checked })} className="accent-gold" />
+            <input
+              type="checkbox"
+              checked={form.active}
+              onChange={(e) => setForm({ ...form, active: e.target.checked })}
+              className="accent-gold"
+            />
             Active (visible to customers)
           </label>
         </div>
         <div className="flex justify-end gap-2 mt-6">
-          <Button variant="ghost" onClick={onClose} disabled={saving}>Cancel</Button>
+          <Button variant="ghost" onClick={onClose} disabled={saving}>
+            Cancel
+          </Button>
           <Button
             disabled={saving || !form.name || !form.price || !form.duration}
-            onClick={async () => { setSaving(true); const ok = await onSave(form); if (!ok) setSaving(false); }}
+            onClick={async () => {
+              setSaving(true);
+              const ok = await onSave(form);
+              if (!ok) setSaving(false);
+            }}
             className="bg-gradient-gold text-gold-foreground hover:opacity-90"
           >
             {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save"}
@@ -363,7 +526,15 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-function Stat({ icon: Icon, label, value }: { icon: typeof Calendar; label: string; value: string }) {
+function Stat({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: typeof Calendar;
+  label: string;
+  value: string;
+}) {
   return (
     <div className="bg-card border border-border rounded-2xl p-6 shadow-elegant">
       <div className="flex items-center justify-between mb-2">

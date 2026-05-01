@@ -14,7 +14,9 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   const navLinks = [
@@ -24,7 +26,9 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || open ? "bg-background/90 backdrop-blur-md border-b border-border/50" : "bg-transparent"}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || open ? "bg-background/90 backdrop-blur-md border-b border-border/50" : "bg-transparent"}`}
+    >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
           <Scissors className="h-5 w-5 text-gold" />
@@ -33,7 +37,13 @@ export function SiteHeader() {
 
         <nav className="hidden md:flex items-center gap-8 text-sm">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-muted-foreground hover:text-gold transition-colors">{l.label}</a>
+            <a
+              key={l.href}
+              href={l.href}
+              className="text-muted-foreground hover:text-gold transition-colors"
+            >
+              {l.label}
+            </a>
           ))}
         </nav>
 
@@ -56,7 +66,9 @@ export function SiteHeader() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ${open ? "max-h-96 border-t border-border/50" : "max-h-0"}`}>
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${open ? "max-h-96 border-t border-border/50" : "max-h-0"}`}
+      >
         <nav className="container mx-auto flex flex-col px-6 py-4 gap-1">
           {navLinks.map((l) => (
             <a

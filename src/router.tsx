@@ -68,8 +68,8 @@ export const router = createRouter({
 });
 
 // 3. Register the router for maximum type safety
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
-    router: typeof router
+    router: typeof router;
   }
 }

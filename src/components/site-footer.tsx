@@ -8,7 +8,9 @@ export function SiteFooter() {
           <Scissors className="h-4 w-4 text-gold" />
           <span className="font-display tracking-wide">LEGEND BARBER SHOP</span>
         </div>
-        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Legend Barber Shop. All rights reserved.</p>
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Legend Barber Shop. All rights reserved.
+        </p>
       </div>
     </footer>
   );

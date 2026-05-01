@@ -11,9 +11,21 @@ export type Service = {
 };
 
 export const TIME_SLOTS = [
-  "09:00", "09:45", "10:30", "11:15", "12:00",
-  "13:30", "14:15", "15:00", "15:45", "16:30",
-  "17:15", "18:00", "18:45", "19:30", "20:15",
+  "09:00",
+  "09:45",
+  "10:30",
+  "11:15",
+  "12:00",
+  "13:30",
+  "14:15",
+  "15:00",
+  "15:45",
+  "16:30",
+  "17:15",
+  "18:00",
+  "18:45",
+  "19:30",
+  "20:15",
 ];
 
 export type Booking = {
@@ -61,17 +73,15 @@ export async function createBooking(input: {
   phone: string;
 }): Promise<Booking> {
   // ✅ No .select() — avoids the 403 SELECT RLS block for anon users
-  const { error } = await supabase
-    .from("bookings")
-    .insert({
-      service_id: input.service.id,
-      service_name: input.service.name,
-      price: input.service.price,
-      booking_date: input.date,
-      booking_time: input.time,
-      customer_name: input.name,
-      customer_phone: input.phone,
-    });
+  const { error } = await supabase.from("bookings").insert({
+    service_id: input.service.id,
+    service_name: input.service.name,
+    price: input.service.price,
+    booking_date: input.date,
+    booking_time: input.time,
+    customer_name: input.name,
+    customer_phone: input.phone,
+  });
 
   if (error) throw error;
 
@@ -102,9 +112,7 @@ export async function fetchUpcomingBookings(): Promise<Booking[]> {
 }
 
 export async function fetchAllBookings(): Promise<Booking[]> {
-  const { data, error } = await supabase
-    .from("bookings")
-    .select("*");
+  const { data, error } = await supabase.from("bookings").select("*");
   if (error) throw error;
   return (data || []).map((b) => ({ ...b, price: Number(b.price) })) as Booking[];
 }
