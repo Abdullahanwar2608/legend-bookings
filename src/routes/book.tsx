@@ -74,6 +74,11 @@ function BookPage() {
   const [submitting, setSubmitting] = useState(false);
   const [confirmedId, setConfirmedId] = useState<string | null>(null);
 
+  // Stability: Scroll to top on every step change to prevent scroll-loops
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
+
   useEffect(() => {
     fetchActiveServices()
       .then(setServices)
