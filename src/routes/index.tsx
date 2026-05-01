@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-barber.jpg";
-import { SERVICES } from "@/lib/booking-store";
+import { fetchActiveServices, type Service } from "@/lib/booking-store";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Star, MapPin, Phone, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/")({
@@ -60,6 +60,10 @@ function Hero() {
 }
 
 function Services() {
+  const [services, setServices] = useState<Service[]>([]);
+  useEffect(() => {
+    fetchActiveServices().then(setServices).catch(() => {});
+  }, []);
   return (
     <section id="services" className="py-24 px-6">
       <div className="container mx-auto max-w-6xl">
@@ -69,7 +73,7 @@ function Services() {
           <p className="text-muted-foreground max-w-xl mx-auto">Every service crafted with precision, care, and the finest tools.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map((s) => (
+          {services.map((s) => (
             <div key={s.id} className="group relative bg-card border border-border rounded-2xl p-7 hover:border-gold/50 transition-all duration-500 hover:-translate-y-1 shadow-elegant">
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-semibold">{s.name}</h3>

@@ -1,12 +1,18 @@
 import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
-import { SERVICES, TIME_SLOTS, saveBooking, isSlotTaken, type Booking } from "@/lib/booking-store";
+import {
+  TIME_SLOTS,
+  createBooking,
+  fetchActiveServices,
+  fetchTakenSlots,
+  type Service,
+} from "@/lib/booking-store";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
-import { Check, ChevronLeft, Calendar as CalIcon, Clock, Scissors, User } from "lucide-react";
+import { Check, ChevronLeft, Calendar as CalIcon, Clock, Scissors, User, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 function formatDate(d: Date): string {
@@ -37,14 +43,30 @@ export const Route = createFileRoute("/book")({
 function BookPage() {
   const search = useSearch({ from: "/book" });
   const [step, setStep] = useState(1);
+  const [services, setServices] = useState<Service[]>([]);
+  const [loadingServices, setLoadingServices] = useState(true);
   const [serviceId, setServiceId] = useState<string>(search.service || "");
   const [date, setDate] = useState<string>("");
   const [time, setTime] = useState<string>("");
+  const [taken, setTaken] = useState<string[]>([]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [confirmedId, setConfirmedId] = useState<string | null>(null);
 
-  const service = SERVICES.find((s) => s.id === serviceId);
+  useEffect(() => {
+    fetchActiveServices()
+      .then(setServices)
+      .catch(() => toast.error("Couldn't load services"))
+      .finally(() => setLoadingServices(false));
+  }, []);
+
+  useEffect(() => {
+    if (!date) { setTaken([]); return; }
+    fetchTakenSlots(date).then(setTaken).catch(() => setTaken([]));
+  }, [date]);
+
+  const service = services.find((s) => s.id === serviceId);
   const today = useMemo(() => { const d = new Date(); d.setHours(0,0,0,0); return d; }, []);
   const maxDate = useMemo(() => { const d = new Date(); d.setDate(d.getDate() + 60); d.setHours(0,0,0,0); return d; }, []);
   const selectedDateObj = useMemo(() => {
@@ -53,7 +75,7 @@ function BookPage() {
     return new Date(y, m - 1, d);
   }, [date]);
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     const schema = z.object({
       name: z.string().trim().min(2, "Name too short").max(60),
       phone: z.string().trim().min(7, "Invalid phone").max(20).regex(/^[+\d\s()-]+$/, "Invalid phone"),
@@ -64,22 +86,29 @@ function BookPage() {
       return;
     }
     if (!service || !date || !time) return;
-    if (isSlotTaken(date, time)) {
-      toast.error("This slot was just booked. Pick another.");
-      setStep(2); setTime("");
-      return;
+    setSubmitting(true);
+    try {
+      const booking = await createBooking({
+        service, date, time,
+        name: result.data.name,
+        phone: result.data.phone,
+      });
+      setConfirmedId(booking.id);
+      setStep(4);
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : "";
+      if (msg.toLowerCase().includes("duplicate") || msg.includes("unique")) {
+        toast.error("This slot was just booked. Pick another.");
+        const fresh = await fetchTakenSlots(date).catch(() => []);
+        setTaken(fresh);
+        setTime("");
+        setStep(2);
+      } else {
+        toast.error("Booking failed. Please try again.");
+      }
+    } finally {
+      setSubmitting(false);
     }
-    const booking: Booking = {
-      id: crypto.randomUUID(),
-      serviceId: service.id,
-      serviceName: service.name,
-      price: service.price,
-      date, time, name: result.data.name, phone: result.data.phone,
-      createdAt: new Date().toISOString(),
-    };
-    saveBooking(booking);
-    setConfirmedId(booking.id);
-    setStep(4);
   };
 
   return (
@@ -98,21 +127,25 @@ function BookPage() {
             {step === 1 && (
               <div className="space-y-4 animate-in fade-in duration-300">
                 <h2 className="text-xl font-semibold mb-4 flex items-center gap-2"><Scissors className="h-5 w-5 text-gold" /> Choose a service</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {SERVICES.map((s) => (
-                    <button
-                      key={s.id}
-                      onClick={() => setServiceId(s.id)}
-                      className={`text-left p-4 rounded-xl border-2 transition-all ${serviceId === s.id ? "border-gold bg-gold/5" : "border-border hover:border-gold/40"}`}
-                    >
-                      <div className="flex justify-between items-start mb-1">
-                        <span className="font-semibold">{s.name}</span>
-                        <span className="text-gold font-bold">${s.price}</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">{s.duration}</p>
-                    </button>
-                  ))}
-                </div>
+                {loadingServices ? (
+                  <div className="py-12 text-center text-muted-foreground"><Loader2 className="h-5 w-5 animate-spin inline mr-2" /> Loading services…</div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {services.map((s) => (
+                      <button
+                        key={s.id}
+                        onClick={() => setServiceId(s.id)}
+                        className={`text-left p-4 rounded-xl border-2 transition-all ${serviceId === s.id ? "border-gold bg-gold/5" : "border-border hover:border-gold/40"}`}
+                      >
+                        <div className="flex justify-between items-start mb-1">
+                          <span className="font-semibold">{s.name}</span>
+                          <span className="text-gold font-bold">${s.price}</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground">{s.duration}</p>
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <div className="flex justify-end pt-4">
                   <Button disabled={!serviceId} onClick={() => setStep(2)} className="bg-gradient-gold text-gold-foreground hover:opacity-90">Continue</Button>
                 </div>
@@ -150,14 +183,14 @@ function BookPage() {
                         <p className="text-xs text-gold mb-3">{prettyDate(date)}</p>
                         <div className="grid grid-cols-3 gap-2">
                           {TIME_SLOTS.map((t) => {
-                            const taken = isSlotTaken(date, t);
+                            const isTaken = taken.includes(t);
                             return (
                               <button
                                 key={t}
-                                disabled={taken}
+                                disabled={isTaken}
                                 onClick={() => setTime(t)}
                                 className={`py-2.5 rounded-lg text-sm font-medium border transition-all ${
-                                  taken ? "border-border/30 text-muted-foreground/40 line-through cursor-not-allowed" :
+                                  isTaken ? "border-border/30 text-muted-foreground/40 line-through cursor-not-allowed" :
                                   time === t ? "border-gold bg-gold text-gold-foreground" : "border-border hover:border-gold/50"
                                 }`}
                               >{t}</button>
@@ -191,8 +224,10 @@ function BookPage() {
                   <Input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+1 (555) 123-4567" maxLength={20} />
                 </div>
                 <div className="flex justify-between pt-4">
-                  <Button variant="ghost" onClick={() => setStep(2)}><ChevronLeft className="h-4 w-4 mr-1" /> Back</Button>
-                  <Button onClick={handleConfirm} className="bg-gradient-gold text-gold-foreground hover:opacity-90">Confirm Booking</Button>
+                  <Button variant="ghost" onClick={() => setStep(2)} disabled={submitting}><ChevronLeft className="h-4 w-4 mr-1" /> Back</Button>
+                  <Button onClick={handleConfirm} disabled={submitting} className="bg-gradient-gold text-gold-foreground hover:opacity-90">
+                    {submitting ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Booking…</> : "Confirm Booking"}
+                  </Button>
                 </div>
               </div>
             )}
