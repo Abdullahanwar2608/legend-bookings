@@ -69,11 +69,6 @@ function BookPage() {
   const service = services.find((s) => s.id === serviceId);
   const today = useMemo(() => { const d = new Date(); d.setHours(0,0,0,0); return d; }, []);
   const maxDate = useMemo(() => { const d = new Date(); d.setDate(d.getDate() + 60); d.setHours(0,0,0,0); return d; }, []);
-  const selectedDateObj = useMemo(() => {
-    if (!date) return undefined;
-    const [y, m, d] = date.split("-").map(Number);
-    return new Date(y, m - 1, d);
-  }, [date]);
 
   const selectedDateObj = useMemo(() => {
     if (!date) return undefined;
@@ -84,23 +79,18 @@ function BookPage() {
   const filteredTimeSlots = useMemo(() => {
     const now = new Date();
     const todayStr = formatDate(now);
-    
-    // If it's a future date, show all slots
+
     if (date !== todayStr) return TIME_SLOTS;
 
-    // If it's today, filter slots by current time
     const currentHour = now.getHours();
     const currentMin = now.getMinutes();
 
     return TIME_SLOTS.filter(slot => {
       const [slotHour, slotMin] = slot.split(':').map(Number);
-      // Return true if the slot hour is in the future 
-      // or if it's the current hour but the minute is in the future
       return slotHour > currentHour || (slotHour === currentHour && slotMin > currentMin);
     });
   }, [date]);
 
-  
   const handleConfirm = async () => {
     const schema = z.object({
       name: z.string().trim().min(2, "Name too short").max(60),
@@ -246,7 +236,7 @@ function BookPage() {
                   <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe" maxLength={60} />
                 </div>
                 <div>
-                  <label className="text-sm text-muted-foreground mb-2 block">Phone number</label>
+                  <label className="text-sm text-muted-foreground mb-2 flex items-center gap-1">Phone number</label>
                   <Input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+1 (555) 123-4567" maxLength={20} />
                 </div>
                 <div className="flex justify-between pt-4">
