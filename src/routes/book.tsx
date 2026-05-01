@@ -308,7 +308,7 @@ function BookPage() {
             )}
 
             {step === 3 && (
-              <div className="space-y-5 animate-in fade-in duration-300">
+              <div className="space-y-5">
                 <h2 className="text-xl font-semibold flex items-center gap-2">
                   <User className="h-5 w-5 text-gold" /> Your details
                 </h2>
