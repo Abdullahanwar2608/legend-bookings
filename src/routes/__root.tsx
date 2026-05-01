@@ -1,5 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -21,67 +20,15 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Legend Barber Shop — Style That Defines You" },
-      {
-        name: "description",
-        content:
-          "Premium barber shop offering haircuts, beard trims, shaves and more. Book your appointment online.",
-      },
-      { property: "og:title", content: "Legend Barber Shop — Style That Defines You" },
-      {
-        property: "og:description",
-        content:
-          "Premium barber shop offering haircuts, beard trims, shaves and more. Book your appointment online.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:title", content: "Legend Barber Shop — Style That Defines You" },
-      {
-        name: "twitter:description",
-        content:
-          "Premium barber shop offering haircuts, beard trims, shaves and more. Book your appointment online.",
-      },
-      {
-        property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/90812db7-2f2b-46ac-a0b9-8073f22af59c/id-preview-2e7f6412--09e6ceac-9aeb-426c-abf1-e77356edf53d.lovable.app-1777582421344.png",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/90812db7-2f2b-46ac-a0b9-8073f22af59c/id-preview-2e7f6412--09e6ceac-9aeb-426c-abf1-e77356edf53d.lovable.app-1777582421344.png",
-      },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
-      },
-    ],
-  }),
-  shellComponent: RootShell,
-  component: () => <Outlet />,
+  component: RootLayout,
   notFoundComponent: NotFoundComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
+function RootLayout() {
   return (
-    <html lang="en" className="dark">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Toaster />
-        <Scripts />
-      </body>
-    </html>
+    <>
+      <Outlet />
+      <Toaster />
+    </>
   );
 }
