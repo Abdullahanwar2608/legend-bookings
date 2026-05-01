@@ -181,7 +181,8 @@ function BookPage() {
         setTime("");
         setStep(2);
       } else {
-        toast.error("Booking failed. Please try again.");
+        console.error("[Booking Error]", e);
+        toast.error(msg || "Booking failed. Please try again.");
       }
     } finally {
       setSubmitting(false);
