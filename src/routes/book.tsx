@@ -58,7 +58,14 @@ function BookPage() {
   const [step, setStep] = useState(1);
   const [services, setServices] = useState<Service[]>([]);
   const [loadingServices, setLoadingServices] = useState(true);
-  const [serviceId, setServiceId] = useState<string>(search.service || "");
+  const [serviceId, setServiceId] = useState<string>("");
+
+  // Sync serviceId with URL search params once services are loaded
+  useEffect(() => {
+    if (search.service && !serviceId) {
+      setServiceId(search.service);
+    }
+  }, [search.service, serviceId]);
   const [date, setDate] = useState<string>("");
   const [time, setTime] = useState<string>("");
   const [taken, setTaken] = useState<string[]>([]);
@@ -107,7 +114,9 @@ function BookPage() {
     return d;
   }, []);
 
-  // Stable date object — only recomputed when the date string changes
+  // Stable date object — only recomputed when the date string changes.
+  // We use a string comparison inside the memo to ensure we don't recreate the Date 
+  // if the string hasn't changed.
   const selectedDateObj = useMemo(() => {
     if (!date) return undefined;
     const [y, m, d] = date.split("-").map(Number);
