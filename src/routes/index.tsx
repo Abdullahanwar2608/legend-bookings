@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-barber.jpg";
-import { SERVICES } from "@/lib/booking-store";
+import { fetchActiveServices, type Service } from "@/lib/booking-store";
+import { useEffect } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Star, MapPin, Phone, Clock, Send } from "lucide-react";
