@@ -15,8 +15,15 @@ export default defineConfig({
     tsconfigPaths(),
   ],
   build: {
-    // Standard minification for Vercel
     minify: "esbuild",
-    reportCompressedSize: false, // Disabling this reduces build-time overhead
+    reportCompressedSize: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "lucide-react"],
+          tanstack: ["@tanstack/react-router", "@tanstack/react-query"],
+        },
+      },
+    },
   },
 });
