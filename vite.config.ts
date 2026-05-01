@@ -8,5 +8,15 @@ import tsconfigPaths from "vite-tsconfig-paths";
 // Notice: vite-plugin-compression is completely gone
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), TanStackRouterVite(), tsconfigPaths()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    TanStackRouterVite(),
+    tsconfigPaths(),
+  ],
+  build: {
+    // Standard minification for Vercel
+    minify: "esbuild",
+    reportCompressedSize: false, // Disabling this reduces build-time overhead
+  },
 });
