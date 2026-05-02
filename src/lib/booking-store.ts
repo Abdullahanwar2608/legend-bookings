@@ -61,9 +61,7 @@ export async function fetchAllServices(): Promise<Service[]> {
 
 export async function fetchTakenSlots(date: string): Promise<string[]> {
   const { data, error } = await supabase
-    .from("booked_slots")
-    .select("booking_time")
-    .eq("booking_date", date);
+    .rpc("get_taken_slots", { _date: date });
   if (error) throw error;
   return (data || []).map((b) => b.booking_time);
 }
