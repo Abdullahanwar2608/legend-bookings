@@ -65,7 +65,7 @@ export async function fetchTakenSlots(date: string): Promise<string[]> {
     .select("booking_time")
     .eq("booking_date", date);
   if (error) throw error;
-  return (data || []).map((b) => b.booking_time);
+  return ((data as any[]) || []).map((b) => b.booking_time);
 }
 
 export async function createBooking(input: {
