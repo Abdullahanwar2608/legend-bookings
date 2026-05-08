@@ -24,7 +24,7 @@ export function SiteHeader() {
 
   const navLinks = [
     { href: "/#services", label: t("nav.services") },
-    { href: "/#reviews", label: "Reviews" }, // I'll use hardcoded or wait, let's see translations. I didn't add Reviews to nav, but wait, 'Contact' is there. Let's add Reviews back if I didn't translate it, or just use English. Let's translate Contact.
+    { href: "/#reviews", label: t("nav.reviews") },
     { href: "/#contact", label: t("nav.contact") },
   ];
 
@@ -35,7 +35,7 @@ export function SiteHeader() {
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
           <Scissors className="h-5 w-5 text-gold" />
-          <span className="font-display text-lg font-semibold tracking-wide">LEGEND</span>
+          <span className="font-display text-lg font-semibold tracking-wide">LEGEND FADE</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm">
