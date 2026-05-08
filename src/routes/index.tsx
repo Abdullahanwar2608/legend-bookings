@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-barber.jpg";
+import heroImg from "@/assets/background.png";
 import { fetchActiveServices, type Service } from "@/lib/booking-store";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -9,6 +9,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
+import haircutImg from "@/assets/haircut.jpeg";
+import beardTrimImg from "@/assets/beardtrim.jpeg";
+import shaveImg from "@/assets/shave.jpeg";
+import kidsCutImg from "@/assets/kidscut.jpeg";
+
+const SERVICE_IMAGES: Record<string, string> = {
+  "Haircut": haircutImg,
+  "Beard Trim": beardTrimImg,
+  "Shave": shaveImg,
+  "Kids Cut": kidsCutImg,
+};
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -46,6 +58,7 @@ function Home() {
 }
 
 function Hero() {
+  const { t } = useTranslation();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
@@ -60,19 +73,19 @@ function Hero() {
       </div>
       <div className="relative z-10 text-center px-6 max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
         <p className="text-gold tracking-[0.4em] text-xs md:text-sm mb-6 font-medium">
-          — EST. 2010 —
+          {t('hero.est')}
         </p>
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-          Legend <span className="text-gradient-gold">Barber</span> Shop
+          {t('hero.title')}
         </h1>
         <p className="text-lg md:text-2xl text-muted-foreground mb-10 font-light italic">
-          Style That Defines You
+          {t('hero.style')}
         </p>
         <Link
           to="/book"
           className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-base font-semibold text-gold-foreground shadow-gold hover:scale-105 transition-transform duration-300"
         >
-          Book Appointment
+          {t('hero.bookAppt')}
         </Link>
       </div>
     </section>
@@ -80,6 +93,7 @@ function Hero() {
 }
 
 function Services() {
+  const { t } = useTranslation();
   const [services, setServices] = useState<Service[]>([]);
   useEffect(() => {
     fetchActiveServices()
@@ -90,20 +104,25 @@ function Services() {
     <section id="services" className="py-24 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-gold tracking-[0.3em] text-xs mb-3">— OUR CRAFT —</p>
+          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t('services.subtitle')}</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Premium <span className="text-gradient-gold">Services</span>
+            {t('services.title')} <span className="text-gradient-gold">{t('services.titleHighlight')}</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Every service crafted with precision, care, and the finest tools.
+            {t('services.desc')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
             <div
               key={s.id}
-              className="group relative bg-card border border-border rounded-2xl p-7 hover:border-gold/50 transition-all duration-500 hover:-translate-y-1 shadow-elegant"
+              className="group relative bg-card border border-border rounded-2xl p-7 hover:border-gold/50 transition-all duration-500 hover:-translate-y-1 shadow-elegant flex flex-col"
             >
+              {SERVICE_IMAGES[s.name] && (
+                <div className="mb-4 -mx-7 -mt-7 overflow-hidden rounded-t-2xl">
+                  <img src={SERVICE_IMAGES[s.name]} alt={s.name} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+              )}
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-semibold">{s.name}</h3>
                 <span className="text-2xl font-display text-gradient-gold font-bold">
@@ -118,7 +137,7 @@ function Services() {
                   search={{ service: s.id } as never}
                   className="text-xs text-gold hover:underline"
                 >
-                  Book →
+                  {t('services.book')}
                 </Link>
               </div>
             </div>
@@ -130,13 +149,14 @@ function Services() {
 }
 
 function Reviews() {
+  const { t } = useTranslation();
   return (
     <section id="reviews" className="py-24 px-6 bg-card/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-gold tracking-[0.3em] text-xs mb-3">— TESTIMONIALS —</p>
+          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t('reviews.subtitle')}</p>
           <h2 className="text-4xl md:text-5xl font-bold">
-            What Our <span className="text-gradient-gold">Clients</span> Say
+            {t('reviews.title')} <span className="text-gradient-gold">{t('reviews.titleHighlight')}</span> {t('reviews.titleEnd')}
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -158,6 +178,7 @@ function Reviews() {
 }
 
 function Contact() {
+  const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -173,9 +194,9 @@ function Contact() {
     <section id="contact" className="py-24 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-gold tracking-[0.3em] text-xs mb-3">— GET IN TOUCH —</p>
+          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t('contact.subtitle')}</p>
           <h2 className="text-4xl md:text-5xl font-bold">
-            Visit <span className="text-gradient-gold">Us</span>
+            {t('contact.title')} <span className="text-gradient-gold">{t('contact.titleHighlight')}</span>
           </h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -214,7 +235,7 @@ function Contact() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="h-8 w-8 text-gold mx-auto mb-2" />
-                  <p className="text-sm font-medium">Map View</p>
+                  <p className="text-sm font-medium">{t('contact.mapView')}</p>
                   <p className="text-xs text-muted-foreground">123 King Street, NY</p>
                 </div>
               </div>
@@ -232,22 +253,22 @@ function Contact() {
             onSubmit={onSubmit}
             className="bg-card border border-border rounded-2xl p-8 space-y-4 shadow-elegant"
           >
-            <h3 className="font-display text-2xl font-semibold mb-2">Send a Message</h3>
+            <h3 className="font-display text-2xl font-semibold mb-2">{t('contact.sendMessage')}</h3>
             <Input
-              placeholder="Your name"
+              placeholder={t('contact.namePlaceholder')}
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               maxLength={100}
             />
             <Input
               type="email"
-              placeholder="Your email"
+              placeholder={t('contact.emailPlaceholder')}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               maxLength={255}
             />
             <Textarea
-              placeholder="Your message"
+              placeholder={t('contact.messagePlaceholder')}
               rows={5}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -257,7 +278,7 @@ function Contact() {
               type="submit"
               className="w-full bg-gradient-gold text-gold-foreground hover:opacity-90"
             >
-              <Send className="h-4 w-4 mr-2" /> Send Message
+              <Send className="h-4 w-4 mr-2" /> {t('contact.sendBtn')}
             </Button>
           </form>
         </div>

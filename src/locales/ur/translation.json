@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "ہوم",
+    "services": "خدمات",
+    "bookNow": "ابھی بک کریں",
+    "contact": "رابطہ"
+  },
+  "hero": {
+    "title": "لیجنڈ فیڈ",
+    "subtitle": "پریمیم باربر شاپ تجربہ",
+    "est": "— قائم کردہ ۲۰۱۰ —",
+    "style": "اسٹائل جو آپ کی پہچان بنے",
+    "bookAppt": "اپوائنٹمنٹ بک کریں"
+  },
+  "services": {
+    "title": "پریمیم",
+    "titleHighlight": "خدمات",
+    "subtitle": "— ہمارا ہنر —",
+    "desc": "ہر خدمت کو درستگی، دیکھ بھال اور بہترین آلات سے انجام دیا جاتا ہے۔",
+    "haircut": "بال کٹوانا",
+    "beardTrim": "داڑھی ٹریم",
+    "shave": "شیو",
+    "kidsCut": "بچوں کے بال",
+    "book": "بک کریں ←"
+  },
+  "reviews": {
+    "subtitle": "— کسٹمرز کی رائے —",
+    "title": "ہمارے",
+    "titleHighlight": "کلائنٹس",
+    "titleEnd": "کیا کہتے ہیں"
+  },
+  "contact": {
+    "subtitle": "— ہم سے رابطہ کریں —",
+    "title": "تشریف",
+    "titleHighlight": "لائیں",
+    "address": "پتہ",
+    "phone": "فون",
+    "hours": "اوقات",
+    "mapView": "نقشہ دیکھیں",
+    "sendMessage": "پیغام بھیجیں",
+    "namePlaceholder": "آپ کا نام",
+    "emailPlaceholder": "آپ کا ای میل",
+    "messagePlaceholder": "آپ کا پیغام",
+    "sendBtn": "پیغام بھیجیں"
+  },
+  "booking": {
+    "subtitle": "— بکنگ —",
+    "title": "اپنی نشست",
+    "titleHighlight": "محفوظ کریں",
+    "step1": "سروس",
+    "step2": "تاریخ اور وقت",
+    "step3": "تفصیلات",
+    "step4": "مکمل",
+    "chooseService": "سروس منتخب کریں",
+    "loadingServices": "سروسز لوڈ ہو رہی ہیں...",
+    "continue": "جاری رکھیں",
+    "pickDate": "تاریخ اور وقت منتخب کریں",
+    "selectDate": "تاریخ منتخب کریں",
+    "availTimes": "دستیاب اوقات",
+    "pickDateMsg": "اوقات دیکھنے کے لیے تاریخ منتخب کریں۔",
+    "back": "پیچھے",
+    "details": "آپ کی تفصیلات",
+    "when": "وقت:",
+    "serviceLabel": "سروس:",
+    "fullName": "پورا نام",
+    "phoneLabel": "فون نمبر",
+    "confirm": "بکنگ کنفرم کریں",
+    "bookingLoading": "بکنگ ہو رہی ہے...",
+    "success": "بکنگ کنفرم ہو گئی!",
+    "successMsg": "ہم نے آپ کی جگہ محفوظ کر لی ہے۔ جلد ملاقات ہوگی۔",
+    "dateLabel": "تاریخ:",
+    "timeLabel": "وقت:",
+    "nameLabel": "نام:",
+    "confLabel": "تصدیقی نمبر:",
+    "backHome": "ہوم پر واپس جائیں"
+  },
+  "footer": {
+    "rights": "تمام حقوق محفوظ ہیں۔",
+    "about": "جدید حضرات کے لیے پریمیم گرومنگ خدمات۔",
+    "brand": "لیجنڈ فیڈ"
+  }
+}

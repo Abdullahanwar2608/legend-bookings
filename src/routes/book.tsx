@@ -22,6 +22,18 @@ import {
   Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
+import haircutImg from "@/assets/haircut.jpeg";
+import beardTrimImg from "@/assets/beardtrim.jpeg";
+import shaveImg from "@/assets/shave.jpeg";
+import kidsCutImg from "@/assets/kidscut.jpeg";
+
+const SERVICE_IMAGES: Record<string, string> = {
+  "Haircut": haircutImg,
+  "Beard Trim": beardTrimImg,
+  "Shave": shaveImg,
+  "Kids Cut": kidsCutImg,
+};
 
 function formatDate(d: Date): string {
   const y = d.getFullYear();
@@ -54,6 +66,7 @@ export const Route = createFileRoute("/book")({
 });
 
 function BookPage() {
+  const { t } = useTranslation();
   const search = useSearch({ from: "/book" });
   const [step, setStep] = useState(1);
   const [services, setServices] = useState<Service[]>([]);
@@ -196,9 +209,9 @@ function BookPage() {
       <div className="pt-28 pb-16 px-6">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-10">
-            <p className="text-gold tracking-[0.3em] text-xs mb-3">— BOOKING —</p>
+            <p className="text-gold tracking-[0.3em] text-xs mb-3">{t('booking.subtitle')}</p>
             <h1 className="text-4xl md:text-5xl font-bold">
-              Reserve Your <span className="text-gradient-gold">Seat</span>
+              {t('booking.title')} <span className="text-gradient-gold">{t('booking.titleHighlight')}</span>
             </h1>
           </div>
 
@@ -208,11 +221,11 @@ function BookPage() {
             {step === 1 && (
               <div className="space-y-4 animate-in fade-in duration-300">
                 <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Scissors className="h-5 w-5 text-gold" /> Choose a service
+                  <Scissors className="h-5 w-5 text-gold" /> {t('booking.chooseService')}
                 </h2>
                 {loadingServices ? (
                   <div className="py-12 text-center text-muted-foreground">
-                    <Loader2 className="h-5 w-5 animate-spin inline mr-2" /> Loading services…
+                    <Loader2 className="h-5 w-5 animate-spin inline mr-2" /> {t('booking.loadingServices')}
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -220,13 +233,18 @@ function BookPage() {
                       <button
                         key={s.id}
                         onClick={() => setServiceId(s.id)}
-                        className={`text-left p-4 rounded-xl border-2 transition-all ${serviceId === s.id ? "border-gold bg-gold/5" : "border-border hover:border-gold/40"}`}
+                        className={`text-left p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${serviceId === s.id ? "border-gold bg-gold/5" : "border-border hover:border-gold/40"}`}
                       >
-                        <div className="flex justify-between items-start mb-1">
-                          <span className="font-semibold">{s.name}</span>
-                          <span className="text-gold font-bold">${s.price}</span>
+                        {SERVICE_IMAGES[s.name] && (
+                          <img src={SERVICE_IMAGES[s.name]} alt={s.name} className="h-16 w-16 rounded-md object-cover flex-shrink-0" />
+                        )}
+                        <div className="flex-1">
+                          <div className="flex justify-between items-start mb-1">
+                            <span className="font-semibold">{s.name}</span>
+                            <span className="text-gold font-bold">${s.price}</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground">{s.duration}</p>
                         </div>
-                        <p className="text-xs text-muted-foreground">{s.duration}</p>
                       </button>
                     ))}
                   </div>
@@ -237,7 +255,7 @@ function BookPage() {
                     onClick={() => setStep(2)}
                     className="bg-gradient-gold text-gold-foreground hover:opacity-90"
                   >
-                    Continue
+                    {t('booking.continue')}
                   </Button>
                 </div>
               </div>
@@ -246,12 +264,12 @@ function BookPage() {
             {step === 2 && (
               <div className="space-y-6 animate-in fade-in duration-300">
                 <h2 className="text-xl font-semibold flex items-center gap-2">
-                  <CalIcon className="h-5 w-5 text-gold" /> Pick a date & time
+                  <CalIcon className="h-5 w-5 text-gold" /> {t('booking.pickDate')}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="text-sm text-muted-foreground mb-2 block">
-                      Select a date
+                      {t('booking.selectDate')}
                     </label>
                     <div className="rounded-xl border border-border bg-background/40 p-2 flex justify-center">
                       <Calendar
@@ -265,11 +283,11 @@ function BookPage() {
                   </div>
                   <div>
                     <label className="text-sm text-muted-foreground mb-2 flex items-center gap-1">
-                      <Clock className="h-3.5 w-3.5" /> Available times
+                      <Clock className="h-3.5 w-3.5" /> {t('booking.availTimes')}
                     </label>
                     {!date ? (
                       <div className="rounded-xl border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
-                        Pick a date to see open slots.
+                        {t('booking.pickDateMsg')}
                       </div>
                     ) : (
                       <>
@@ -301,14 +319,14 @@ function BookPage() {
                 </div>
                 <div className="flex justify-between pt-4">
                   <Button variant="ghost" onClick={() => setStep(1)}>
-                    <ChevronLeft className="h-4 w-4 mr-1" /> Back
+                    <ChevronLeft className="h-4 w-4 mr-1" /> {t('booking.back')}
                   </Button>
                   <Button
                     disabled={!date || !time}
                     onClick={() => setStep(3)}
                     className="bg-gradient-gold text-gold-foreground hover:opacity-90"
                   >
-                    Continue
+                    {t('booking.continue')}
                   </Button>
                 </div>
               </div>
@@ -317,23 +335,23 @@ function BookPage() {
             {step === 3 && (
               <div className="space-y-5">
                 <h2 className="text-xl font-semibold flex items-center gap-2">
-                  <User className="h-5 w-5 text-gold" /> Your details
+                  <User className="h-5 w-5 text-gold" /> {t('booking.details')}
                 </h2>
                 <div className="bg-background/50 rounded-xl p-4 text-sm space-y-1 border border-border/50">
                   <p>
-                    <span className="text-muted-foreground">Service:</span>{" "}
+                    <span className="text-muted-foreground">{t('booking.serviceLabel')}</span>{" "}
                     <span className="font-medium">{service?.name}</span> ·{" "}
                     <span className="text-gold font-semibold">${service?.price}</span>
                   </p>
                   <p>
-                    <span className="text-muted-foreground">When:</span>{" "}
+                    <span className="text-muted-foreground">{t('booking.when')}</span>{" "}
                     <span className="font-medium">
                       {date} at {time}
                     </span>
                   </p>
                 </div>
                 <div>
-                  <label className="text-sm text-muted-foreground mb-2 block">Full name</label>
+                  <label className="text-sm text-muted-foreground mb-2 block">{t('booking.fullName')}</label>
                   <Input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -343,7 +361,7 @@ function BookPage() {
                 </div>
                 <div>
                   <label className="text-sm text-muted-foreground mb-2 flex items-center gap-1">
-                    Phone number
+                    {t('booking.phoneLabel')}
                   </label>
                   <Input
                     value={phone}
@@ -354,7 +372,7 @@ function BookPage() {
                 </div>
                 <div className="flex justify-between pt-4">
                   <Button variant="ghost" onClick={() => setStep(2)} disabled={submitting}>
-                    <ChevronLeft className="h-4 w-4 mr-1" /> Back
+                    <ChevronLeft className="h-4 w-4 mr-1" /> {t('booking.back')}
                   </Button>
                   <Button
                     onClick={handleConfirm}
@@ -363,10 +381,10 @@ function BookPage() {
                   >
                     {submitting ? (
                       <>
-                        <Loader2 className="h-4 w-4 mr-2 animate-spin" /> Booking…
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin" /> {t('booking.bookingLoading')}
                       </>
                     ) : (
-                      "Confirm Booking"
+                      t('booking.confirm')
                     )}
                   </Button>
                 </div>
@@ -378,29 +396,29 @@ function BookPage() {
                 <div className="mx-auto h-20 w-20 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold mb-6">
                   <Check className="h-10 w-10 text-gold-foreground" strokeWidth={3} />
                 </div>
-                <h2 className="text-3xl font-bold mb-2">Booking Confirmed!</h2>
+                <h2 className="text-3xl font-bold mb-2">{t('booking.success')}</h2>
                 <p className="text-muted-foreground mb-6">
-                  We've reserved your spot. See you soon.
+                  {t('booking.successMsg')}
                 </p>
                 <div className="bg-background/50 rounded-xl p-5 max-w-sm mx-auto text-left text-sm space-y-2 border border-border/50 mb-8">
                   <p>
-                    <span className="text-muted-foreground">Service:</span>{" "}
+                    <span className="text-muted-foreground">{t('booking.serviceLabel')}</span>{" "}
                     <span className="font-medium">{service?.name}</span>
                   </p>
                   <p>
-                    <span className="text-muted-foreground">Date:</span>{" "}
+                    <span className="text-muted-foreground">{t('booking.dateLabel')}</span>{" "}
                     <span className="font-medium">{date}</span>
                   </p>
                   <p>
-                    <span className="text-muted-foreground">Time:</span>{" "}
+                    <span className="text-muted-foreground">{t('booking.timeLabel')}</span>{" "}
                     <span className="font-medium">{time}</span>
                   </p>
                   <p>
-                    <span className="text-muted-foreground">Name:</span>{" "}
+                    <span className="text-muted-foreground">{t('booking.nameLabel')}</span>{" "}
                     <span className="font-medium">{name}</span>
                   </p>
                   <p>
-                    <span className="text-muted-foreground">Confirmation #:</span>{" "}
+                    <span className="text-muted-foreground">{t('booking.confLabel')}</span>{" "}
                     <span className="font-mono text-xs text-gold">
                       {confirmedId.slice(0, 8).toUpperCase()}
                     </span>
@@ -410,7 +428,7 @@ function BookPage() {
                   to="/"
                   className="inline-flex items-center justify-center rounded-full bg-gradient-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-gold"
                 >
-                  Back to Home
+                  {t('booking.backHome')}
                 </Link>
               </div>
             )}
@@ -422,7 +440,8 @@ function BookPage() {
 }
 
 function Stepper({ step }: { step: number }) {
-  const labels = ["Service", "Date & Time", "Details", "Done"];
+  const { t } = useTranslation();
+  const labels = [t('booking.step1'), t('booking.step2'), t('booking.step3'), t('booking.step4')];
   return (
     <div className="flex items-center justify-between max-w-lg mx-auto">
       {labels.map((label, i) => {

@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "services": "الخدمات",
+    "bookNow": "احجز الآن",
+    "contact": "تواصل معنا"
+  },
+  "hero": {
+    "title": "ليجند فيد",
+    "subtitle": "تجربة حلاقة فاخرة",
+    "est": "— تأسس في ٢٠١٠ —",
+    "style": "أناقة تعبر عنك",
+    "bookAppt": "احجز موعداً"
+  },
+  "services": {
+    "title": "خدمات",
+    "titleHighlight": "فاخرة",
+    "subtitle": "— حرفتنا —",
+    "desc": "كل خدمة مصممة بدقة وعناية وبأفضل الأدوات.",
+    "haircut": "قص الشعر",
+    "beardTrim": "تشذيب اللحية",
+    "shave": "الحلاقة",
+    "kidsCut": "قص شعر الأطفال",
+    "book": "احجز ←"
+  },
+  "reviews": {
+    "subtitle": "— آراء العملاء —",
+    "title": "ماذا يقول",
+    "titleHighlight": "عملاؤنا",
+    "titleEnd": ""
+  },
+  "contact": {
+    "subtitle": "— تواصل معنا —",
+    "title": "قم",
+    "titleHighlight": "بزيارتنا",
+    "address": "العنوان",
+    "phone": "رقم الهاتف",
+    "hours": "ساعات العمل",
+    "mapView": "عرض الخريطة",
+    "sendMessage": "أرسل رسالة",
+    "namePlaceholder": "اسمك",
+    "emailPlaceholder": "بريدك الإلكتروني",
+    "messagePlaceholder": "رسالتك",
+    "sendBtn": "إرسال الرسالة"
+  },
+  "booking": {
+    "subtitle": "— الحجز —",
+    "title": "احجز",
+    "titleHighlight": "مقعدك",
+    "step1": "الخدمة",
+    "step2": "التاريخ والوقت",
+    "step3": "التفاصيل",
+    "step4": "تم",
+    "chooseService": "اختر الخدمة",
+    "loadingServices": "جاري تحميل الخدمات...",
+    "continue": "متابعة",
+    "pickDate": "اختر التاريخ والوقت",
+    "selectDate": "اختر التاريخ",
+    "availTimes": "الأوقات المتاحة",
+    "pickDateMsg": "اختر التاريخ لرؤية الأوقات المتاحة.",
+    "back": "رجوع",
+    "details": "تفاصيلك",
+    "when": "الوقت:",
+    "serviceLabel": "الخدمة:",
+    "fullName": "الاسم الكامل",
+    "phoneLabel": "رقم الهاتف",
+    "confirm": "تأكيد الحجز",
+    "bookingLoading": "جاري الحجز...",
+    "success": "تم تأكيد الحجز!",
+    "successMsg": "لقد حجزنا مقعدك. نراك قريباً.",
+    "dateLabel": "التاريخ:",
+    "timeLabel": "الوقت:",
+    "nameLabel": "الاسم:",
+    "confLabel": "رقم التأكيد:",
+    "backHome": "العودة للرئيسية"
+  },
+  "footer": {
+    "rights": "جميع الحقوق محفوظة.",
+    "about": "خدمات حلاقة فاخرة للرجل العصري.",
+    "brand": "ليجند فيد"
+  }
+}

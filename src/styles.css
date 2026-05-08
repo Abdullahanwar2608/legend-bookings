@@ -112,3 +112,17 @@
 @utility shadow-elegant {
   box-shadow: var(--shadow-elegant);
 }
+
+[dir="rtl"] {
+  font-family: 'Noto Naskh Arabic', 'Noto Nastaliq Urdu', sans-serif;
+}
+[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}

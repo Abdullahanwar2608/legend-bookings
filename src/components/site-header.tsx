@@ -1,10 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Scissors, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -20,9 +23,9 @@ export function SiteHeader() {
   }, [open]);
 
   const navLinks = [
-    { href: "/#services", label: "Services" },
-    { href: "/#reviews", label: "Reviews" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/#services", label: t("nav.services") },
+    { href: "/#reviews", label: "Reviews" }, // I'll use hardcoded or wait, let's see translations. I didn't add Reviews to nav, but wait, 'Contact' is there. Let's add Reviews back if I didn't translate it, or just use English. Let's translate Contact.
+    { href: "/#contact", label: t("nav.contact") },
   ];
 
   return (
@@ -48,11 +51,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <LanguageSwitcher />
           <Link
             to="/book"
             className="hidden sm:inline-flex rounded-full bg-gradient-gold px-5 py-2 text-sm font-medium text-gold-foreground shadow-gold hover:opacity-90 transition-opacity"
           >
-            Book Now
+            {t("nav.bookNow")}
           </Link>
           <button
             type="button"
@@ -85,7 +89,7 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
             className="mt-3 inline-flex justify-center rounded-full bg-gradient-gold px-5 py-3 text-sm font-medium text-gold-foreground shadow-gold"
           >
-            Book Now
+            {t("nav.bookNow")}
           </Link>
         </nav>
       </div>

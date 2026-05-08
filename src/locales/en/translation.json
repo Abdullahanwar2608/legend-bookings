@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "bookNow": "Book Now",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Legend Fade",
+    "subtitle": "Premium Barbershop Experience",
+    "est": "— EST. 2010 —",
+    "style": "Style That Defines You",
+    "bookAppt": "Book Appointment"
+  },
+  "services": {
+    "title": "Premium",
+    "titleHighlight": "Services",
+    "subtitle": "— OUR CRAFT —",
+    "desc": "Every service crafted with precision, care, and the finest tools.",
+    "haircut": "Haircut",
+    "beardTrim": "Beard Trim",
+    "shave": "Shave",
+    "kidsCut": "Kids Cut",
+    "book": "Book →"
+  },
+  "reviews": {
+    "subtitle": "— TESTIMONIALS —",
+    "title": "What Our",
+    "titleHighlight": "Clients",
+    "titleEnd": "Say"
+  },
+  "contact": {
+    "subtitle": "— GET IN TOUCH —",
+    "title": "Visit",
+    "titleHighlight": "Us",
+    "address": "Address",
+    "phone": "Phone",
+    "hours": "Opening Hours",
+    "mapView": "Map View",
+    "sendMessage": "Send a Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your email",
+    "messagePlaceholder": "Your message",
+    "sendBtn": "Send Message"
+  },
+  "booking": {
+    "subtitle": "— BOOKING —",
+    "title": "Reserve Your",
+    "titleHighlight": "Seat",
+    "step1": "Service",
+    "step2": "Date & Time",
+    "step3": "Details",
+    "step4": "Done",
+    "chooseService": "Choose a service",
+    "loadingServices": "Loading services…",
+    "continue": "Continue",
+    "pickDate": "Pick a date & time",
+    "selectDate": "Select a date",
+    "availTimes": "Available times",
+    "pickDateMsg": "Pick a date to see open slots.",
+    "back": "Back",
+    "details": "Your details",
+    "when": "When:",
+    "serviceLabel": "Service:",
+    "fullName": "Full name",
+    "phoneLabel": "Phone number",
+    "confirm": "Confirm Booking",
+    "bookingLoading": "Booking…",
+    "success": "Booking Confirmed!",
+    "successMsg": "We've reserved your spot. See you soon.",
+    "dateLabel": "Date:",
+    "timeLabel": "Time:",
+    "nameLabel": "Name:",
+    "confLabel": "Confirmation #:",
+    "backHome": "Back to Home"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "about": "Premium grooming services for the modern gentleman.",
+    "brand": "Legend Fade"
+  }
+}
