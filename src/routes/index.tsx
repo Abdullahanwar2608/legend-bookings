@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/background.png";
+import heroImg from "@/assets/background.webp";
 import { fetchActiveServices, type Service } from "@/lib/booking-store";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -10,10 +10,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
-import haircutImg from "@/assets/haircut.jpeg";
-import beardTrimImg from "@/assets/beardtrim.jpeg";
-import shaveImg from "@/assets/shave.jpeg";
-import kidsCutImg from "@/assets/kidscut.jpeg";
+import haircutImg from "@/assets/haircut.webp";
+import beardTrimImg from "@/assets/beardtrim.webp";
+import shaveImg from "@/assets/shave.webp";
+import kidsCutImg from "@/assets/kidscut.webp";
 
 const SERVICE_IMAGES: Record<string, string> = {
   "Haircut": haircutImg,
