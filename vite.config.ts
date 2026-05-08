@@ -15,6 +15,7 @@ export default defineConfig({
     tsconfigPaths(),
   ],
   build: {
+    sourcemap: false,
     minify: "esbuild",
     reportCompressedSize: false,
     rollupOptions: {
