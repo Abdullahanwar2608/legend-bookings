@@ -236,7 +236,15 @@ function BookPage() {
                         className={`text-left p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${serviceId === s.id ? "border-gold bg-gold/5" : "border-border hover:border-gold/40"}`}
                       >
                         {SERVICE_IMAGES[s.name] && (
-                          <img src={SERVICE_IMAGES[s.name]} alt={s.name} className="h-16 w-16 rounded-md object-cover flex-shrink-0" />
+                          <img
+                            src={SERVICE_IMAGES[s.name]}
+                            alt={s.name}
+                            loading="lazy"
+                            decoding="async"
+                            width={128}
+                            height={128}
+                            className="h-16 w-16 rounded-md object-cover flex-shrink-0"
+                          />
                         )}
                         <div className="flex-1">
                           <div className="flex justify-between items-start mb-1">

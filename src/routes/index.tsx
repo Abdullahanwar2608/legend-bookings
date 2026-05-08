@@ -67,6 +67,9 @@ function Hero() {
           alt=""
           width={1920}
           height={1280}
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
           className="h-full w-full object-cover blur-sm scale-110"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
@@ -119,8 +122,16 @@ function Services() {
               className="group relative bg-card border border-border rounded-2xl p-7 hover:border-gold/50 transition-all duration-500 hover:-translate-y-1 shadow-elegant flex flex-col"
             >
               {SERVICE_IMAGES[s.name] && (
-                <div className="mb-4 -mx-7 -mt-7 overflow-hidden rounded-t-2xl">
-                  <img src={SERVICE_IMAGES[s.name]} alt={s.name} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="mb-4 -mx-7 -mt-7 overflow-hidden rounded-t-2xl bg-card">
+                  <img
+                    src={SERVICE_IMAGES[s.name]}
+                    alt={s.name}
+                    loading="lazy"
+                    decoding="async"
+                    width={600}
+                    height={400}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               )}
               <div className="flex items-start justify-between mb-4">
