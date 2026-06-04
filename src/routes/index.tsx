@@ -206,8 +206,13 @@ function Contact() {
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
     );
-    window.location.href = `mailto:legend.service.2810@gmail.com?subject=${subject}&body=${body}`;
-    toast.success("Opening your email client…");
+    
+    // Create an anchor element to trigger the mailto (more reliable than window.location)
+    const link = document.createElement("a");
+    link.href = `mailto:legend.service.2810@gmail.com?subject=${subject}&body=${body}`;
+    link.click();
+    
+    toast.success(t("contact.sendBtn") + " - Opening email client…");
     setForm({ name: "", email: "", message: "" });
   };
 
