@@ -1,6 +1,8 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
 import { Scissors } from "lucide-react";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 function NotFoundComponent() {
   return (
@@ -66,6 +68,14 @@ export const Route = createRootRoute({
 });
 
 function RootLayout() {
+  const { i18n } = useTranslation();
+
+  // Dynamically update <html lang="..."> to match the active language
+  // so screen readers and search engines always get the correct signal.
+  useEffect(() => {
+    document.documentElement.lang = i18n.language ?? "fi";
+  }, [i18n.language]);
+
   return (
     <>
       <Outlet />
