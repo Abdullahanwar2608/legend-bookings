@@ -25,6 +25,7 @@ export function SiteHeader() {
   const navLinks = [
     { href: "/#services", label: t("nav.services") },
     { href: "/#reviews", label: t("nav.reviews") },
+    { href: "/about", label: t("nav.about") },
     { href: "/#contact", label: t("nav.contact") },
   ];
 

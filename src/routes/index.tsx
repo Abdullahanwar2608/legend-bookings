@@ -27,6 +27,29 @@ const GOOGLE_MAPS_URL =
 
 export const Route = createFileRoute("/")({
   component: Home,
+  head: () => ({
+    meta: [
+      { title: "Legend Barber | Premium Parturi Espoo" },
+      {
+        name: "description",
+        content:
+          "Legend Barber – parturi Espoossa. Hiustenleikkaus 15€, partapalvelut, lasten leikkaukset. Everstinkuja 1, 02600 Espoo. Barber Shop Espoo.",
+      },
+      { name: "keywords", content: "parturi espoo, barber shop espoo, haircut everstinkuja, mens haircut espoo, legend barber" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "Legend Barber | Premium Parturi Espoo" },
+      {
+        property: "og:description",
+        content: "Parturi Espoossa – hiustenleikkaus alkaen 15€. Everstinkuja 1, 02600 Espoo. Baraa aika nyt! Barber Espoo.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://legend-bookings.vercel.app" },
+      { property: "og:site_name", content: "Legend Barber" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Legend Barber | Premium Parturi Espoo" },
+      { name: "twitter:description", content: "Parturi Espoossa. Hiustenleikkaus, parta, lasten leikkaukset. Everstinkuja 1, Espoo." },
+    ],
+  }),
 });
 
 const REVIEWS = [
@@ -47,7 +70,51 @@ const REVIEWS = [
   },
 ];
 
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HairSalon"],
+  name: "Legend Barber",
+  url: "https://legend-bookings.vercel.app",
+  telephone: "+358449299266",
+  email: "legend.service.2810@gmail.com",
+  priceRange: "€€",
+  description: "Premium barbershop in Espoo, Finland. Haircuts, beard trims, shaves and kids cuts.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Everstinkuja 1",
+    postalCode: "02600",
+    addressLocality: "Espoo",
+    addressCountry: "FI",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 60.2042,
+    longitude: 24.656,
+  },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "10:00", closes: "20:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "10:00", closes: "18:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Sunday"], opens: "12:00", closes: "18:00" },
+  ],
+  hasMap: "https://www.google.com/maps/search/?api=1&query=Everstinkuja+1%2C+02600%2C+Espoo",
+  sameAs: [],
+};
+
 function Home() {
+  useEffect(() => {
+    // Inject JSON-LD schema into <head>
+    const existing = document.getElementById("jsonld-localbusiness");
+    if (existing) existing.remove();
+    const script = document.createElement("script");
+    script.id = "jsonld-localbusiness";
+    script.type = "application/ld+json";
+    script.text = JSON.stringify(JSON_LD);
+    document.head.appendChild(script);
+    return () => {
+      document.getElementById("jsonld-localbusiness")?.remove();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       <SiteHeader />
