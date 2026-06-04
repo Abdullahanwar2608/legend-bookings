@@ -249,7 +249,7 @@ function BookPage() {
                         <div className="flex-1">
                           <div className="flex justify-between items-start mb-1">
                             <span className="font-semibold">{s.name}</span>
-                            <span className="text-gold font-bold">${s.price}</span>
+                            <span className="text-gold font-bold">€{s.price}</span>
                           </div>
                           <p className="text-xs text-muted-foreground">{s.duration}</p>
                         </div>
@@ -349,7 +349,7 @@ function BookPage() {
                   <p>
                     <span className="text-muted-foreground">{t('booking.serviceLabel')}</span>{" "}
                     <span className="font-medium">{service?.name}</span> ·{" "}
-                    <span className="text-gold font-semibold">${service?.price}</span>
+                    <span className="text-gold font-semibold">€{service?.price}</span>
                   </p>
                   <p>
                     <span className="text-muted-foreground">{t('booking.when')}</span>{" "}

@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "home": "Etusivu",
+    "services": "Palvelut",
+    "reviews": "Arvostelut",
+    "bookNow": "Varaa aika",
+    "contact": "Yhteystiedot"
+  },
+  "hero": {
+    "title": "Legend Barber",
+    "subtitle": "Laadukas parturi-kokemus",
+    "est": "— PERUSTETTU 2010 —",
+    "style": "Tyyli, joka määrittelee sinut",
+    "bookAppt": "Varaa aika"
+  },
+  "services": {
+    "title": "Laadukkaat",
+    "titleHighlight": "Palvelut",
+    "subtitle": "— OSAAMISEMME —",
+    "desc": "Jokainen palvelu toteutetaan tarkkuudella, huolella ja parhailla välineillä.",
+    "haircut": "Hiustenleikkaus",
+    "beardTrim": "Parran siistiminen",
+    "shave": "Ajo",
+    "kidsCut": "Lasten hiustenleikkaus",
+    "book": "Varaa →"
+  },
+  "reviews": {
+    "subtitle": "— ASIAKASPALAUTTEET —",
+    "title": "Mitä",
+    "titleHighlight": "Asiakkaamme",
+    "titleEnd": "Sanovat"
+  },
+  "contact": {
+    "subtitle": "— OTA YHTEYTTÄ —",
+    "title": "Vieraile",
+    "titleHighlight": "Luonamme",
+    "address": "Osoite",
+    "phone": "Puhelin",
+    "email": "Sähköposti",
+    "hours": "Aukioloajat",
+    "mapView": "Avaa Google Mapsissa",
+    "sendMessage": "Lähetä viesti",
+    "namePlaceholder": "Nimesi",
+    "emailPlaceholder": "Sähköpostisi",
+    "messagePlaceholder": "Viestisi",
+    "sendBtn": "Lähetä viesti",
+    "addressValue": "Everstinkuja 1, 02600, Espoo",
+    "phoneValue": "+358 44 9299266",
+    "emailValue": "legend.service.2810@gmail.com",
+    "hours_mf": "Ma – Pe: 10:00 – 20:00",
+    "hours_sat": "La: 10:00 – 18:00",
+    "hours_sun": "Su: 12:00 – 18:00"
+  },
+  "booking": {
+    "subtitle": "— VARAUS —",
+    "title": "Varaa",
+    "titleHighlight": "Paikkasi",
+    "step1": "Palvelu",
+    "step2": "Päivä & Aika",
+    "step3": "Tiedot",
+    "step4": "Valmis",
+    "chooseService": "Valitse palvelu",
+    "loadingServices": "Ladataan palveluita…",
+    "continue": "Jatka",
+    "pickDate": "Valitse päivä & aika",
+    "selectDate": "Valitse päivämäärä",
+    "availTimes": "Vapaat ajat",
+    "pickDateMsg": "Valitse päivä nähdäksesi vapaat ajat.",
+    "back": "Takaisin",
+    "details": "Yhteystietosi",
+    "when": "Milloin:",
+    "serviceLabel": "Palvelu:",
+    "fullName": "Koko nimi",
+    "phoneLabel": "Puhelinnumero",
+    "confirm": "Vahvista varaus",
+    "bookingLoading": "Varataan…",
+    "success": "Varaus vahvistettu!",
+    "successMsg": "Olemme varanneet paikkasi. Nähdään pian.",
+    "dateLabel": "Päivä:",
+    "timeLabel": "Aika:",
+    "nameLabel": "Nimi:",
+    "confLabel": "Vahvistusnumero:",
+    "backHome": "Takaisin etusivulle"
+  },
+  "footer": {
+    "rights": "Kaikki oikeudet pidätetään.",
+    "about": "Laadukkaat parturi-palvelut Espoossa, Suomessa.",
+    "brand": "Legend Barber"
+  }
+}

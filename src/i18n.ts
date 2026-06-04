@@ -2,23 +2,22 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import en from './locales/en/translation.json';
-import ar from './locales/ar/translation.json';
-import ur from './locales/ur/translation.json';
-import fr from './locales/fr/translation.json';
+import fi from './locales/fi/translation.json';
 
-const SUPPORTED = ['en', 'ar', 'ur', 'fr'];
+const SUPPORTED = ['fi', 'en'];
 
 // Read saved language from localStorage (set by LanguageSwitcher)
 const saved = typeof window !== 'undefined'
   ? localStorage.getItem('app-lang')
   : null;
 
-const activeLang = saved && SUPPORTED.includes(saved) ? saved : 'en';
+// Default to Finnish on first visit
+const activeLang = saved && SUPPORTED.includes(saved) ? saved : 'fi';
 
-// Apply dir immediately on load so RTL works before React mounts
+// Apply lang immediately on load before React mounts
 if (typeof document !== 'undefined') {
   document.documentElement.lang = activeLang;
-  document.documentElement.dir = ['ar', 'ur'].includes(activeLang) ? 'rtl' : 'ltr';
+  document.documentElement.dir = 'ltr';
 }
 
 i18n
@@ -26,9 +25,7 @@ i18n
   .init({
     resources: {
       en: { translation: en },
-      ar: { translation: ar },
-      ur: { translation: ur },
-      fr: { translation: fr },
+      fi: { translation: fi },
     },
     lng: activeLang,
     fallbackLng: 'en',
@@ -37,4 +34,3 @@ i18n
   });
 
 export default i18n;
-

@@ -3,7 +3,7 @@ import heroImg from "@/assets/background.webp";
 import { fetchActiveServices, type Service } from "@/lib/booking-store";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Star, MapPin, Phone, Clock, Send } from "lucide-react";
+import { Star, MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,6 +21,9 @@ const SERVICE_IMAGES: Record<string, string> = {
   "Shave": shaveImg,
   "Kids Cut": kidsCutImg,
 };
+
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Everstinkuja+1%2C+02600%2C+Espoo";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -75,20 +78,20 @@ function Hero() {
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
       </div>
       <div className="relative z-10 text-center px-6 max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
-        <p className="text-gold tracking-[0.4em] text-xs md:text-sm mb-6 font-medium">
-          {t('hero.est')}
+        <p className="tracking-[0.4em] text-xs md:text-sm mb-6 font-medium" style={{ color: "#FFE000" }}>
+          {t("hero.est")}
         </p>
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-          {t('hero.title')}
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style={{ color: "#FFE000" }}>
+          {t("hero.title")}
         </h1>
-        <p className="text-lg md:text-2xl text-muted-foreground mb-10 font-light italic">
-          {t('hero.style')}
+        <p className="text-lg md:text-2xl mb-10 font-light italic" style={{ color: "rgba(255,224,0,0.75)" }}>
+          {t("hero.style")}
         </p>
         <Link
           to="/book"
-          className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-base font-semibold text-gold-foreground shadow-gold hover:scale-105 transition-transform duration-300"
+          className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-base font-semibold text-black shadow-gold hover:scale-105 transition-transform duration-300"
         >
-          {t('hero.bookAppt')}
+          {t("hero.bookAppt")}
         </Link>
       </div>
     </section>
@@ -107,12 +110,12 @@ function Services() {
     <section id="services" className="py-24 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t('services.subtitle')}</p>
+          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t("services.subtitle")}</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            {t('services.title')} <span className="text-gradient-gold">{t('services.titleHighlight')}</span>
+            {t("services.title")} <span className="text-gradient-gold">{t("services.titleHighlight")}</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            {t('services.desc')}
+          <p className="text-gold/60 max-w-xl mx-auto">
+            {t("services.desc")}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -135,20 +138,20 @@ function Services() {
                 </div>
               )}
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-semibold">{s.name}</h3>
+                <h3 className="text-xl font-semibold text-gold">{s.name}</h3>
                 <span className="text-2xl font-display text-gradient-gold font-bold">
-                  ${s.price}
+                  €{s.price}
                 </span>
               </div>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{s.description}</p>
+              <p className="text-sm text-gold/60 mb-4 leading-relaxed">{s.description}</p>
               <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                <span className="text-xs text-muted-foreground">{s.duration}</span>
+                <span className="text-xs text-gold/50">{s.duration}</span>
                 <Link
                   to="/book"
                   search={{ service: s.id } as never}
                   className="text-xs text-gold hover:underline"
                 >
-                  {t('services.book')}
+                  {t("services.book")}
                 </Link>
               </div>
             </div>
@@ -165,9 +168,9 @@ function Reviews() {
     <section id="reviews" className="py-24 px-6 bg-card/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t('reviews.subtitle')}</p>
+          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t("reviews.subtitle")}</p>
           <h2 className="text-4xl md:text-5xl font-bold">
-            {t('reviews.title')} <span className="text-gradient-gold">{t('reviews.titleHighlight')}</span> {t('reviews.titleEnd')}
+            {t("reviews.title")} <span className="text-gradient-gold">{t("reviews.titleHighlight")}</span> {t("reviews.titleEnd")}
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -178,8 +181,8 @@ function Reviews() {
                   <Star key={j} className="h-4 w-4 fill-gold text-gold" />
                 ))}
               </div>
-              <p className="text-muted-foreground italic mb-6 leading-relaxed">"{r.text}"</p>
-              <p className="font-semibold text-sm">{r.name}</p>
+              <p className="text-gold/70 italic mb-6 leading-relaxed">"{r.text}"</p>
+              <p className="font-semibold text-sm text-gold">{r.name}</p>
             </div>
           ))}
         </div>
@@ -191,13 +194,20 @@ function Reviews() {
 function Contact() {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
-      toast.error("Please fill in all fields");
+      toast.error(t("contact.namePlaceholder") ? "Please fill in all fields." : "Please fill in all fields.");
       return;
     }
-    toast.success("Message sent! We'll be in touch soon.");
+    // mailto: — opens the user's email client with the message pre-filled
+    const subject = encodeURIComponent(`Website message from ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+    );
+    window.location.href = `mailto:legend.service.2810@gmail.com?subject=${subject}&body=${body}`;
+    toast.success("Opening your email client…");
     setForm({ name: "", email: "", message: "" });
   };
 
@@ -205,53 +215,87 @@ function Contact() {
     <section id="contact" className="py-24 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t('contact.subtitle')}</p>
+          <p className="text-gold tracking-[0.3em] text-xs mb-3">{t("contact.subtitle")}</p>
           <h2 className="text-4xl md:text-5xl font-bold">
-            {t('contact.title')} <span className="text-gradient-gold">{t('contact.titleHighlight')}</span>
+            {t("contact.title")} <span className="text-gradient-gold">{t("contact.titleHighlight")}</span>
           </h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-6">
-            <div className="bg-card border border-border rounded-2xl p-6 flex items-start gap-4">
+            {/* Address — links to Google Maps */}
+            <div className="bg-card border border-border rounded-2xl p-6 flex items-start gap-4 hover:border-gold/40 transition-colors">
               <MapPin className="h-5 w-5 text-gold mt-1 shrink-0" />
               <div>
-                <h3 className="font-semibold mb-1">Address</h3>
-                <p className="text-sm text-muted-foreground">
-                  123 King Street, Downtown
-                  <br />
-                  New York, NY 10001
-                </p>
+                <h3 className="font-semibold mb-1 text-gold">{t("contact.address")}</h3>
+                <a
+                  href={GOOGLE_MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gold/70 hover:text-gold underline underline-offset-2 transition-colors"
+                >
+                  Everstinkuja 1, 02600, Espoo
+                </a>
               </div>
             </div>
+
+            {/* Phone */}
             <div className="bg-card border border-border rounded-2xl p-6 flex items-start gap-4">
               <Phone className="h-5 w-5 text-gold mt-1 shrink-0" />
               <div>
-                <h3 className="font-semibold mb-1">Phone</h3>
-                <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
+                <h3 className="font-semibold mb-1 text-gold">{t("contact.phone")}</h3>
+                <a
+                  href="tel:+358449299266"
+                  className="text-sm text-gold/70 hover:text-gold transition-colors"
+                >
+                  +358 44 9299266
+                </a>
               </div>
             </div>
+
+            {/* Email */}
+            <div className="bg-card border border-border rounded-2xl p-6 flex items-start gap-4">
+              <Mail className="h-5 w-5 text-gold mt-1 shrink-0" />
+              <div>
+                <h3 className="font-semibold mb-1 text-gold">{t("contact.email")}</h3>
+                <a
+                  href="mailto:legend.service.2810@gmail.com"
+                  className="text-sm text-gold/70 hover:text-gold transition-colors"
+                >
+                  legend.service.2810@gmail.com
+                </a>
+              </div>
+            </div>
+
+            {/* Opening Hours */}
             <div className="bg-card border border-border rounded-2xl p-6 flex items-start gap-4">
               <Clock className="h-5 w-5 text-gold mt-1 shrink-0" />
               <div>
-                <h3 className="font-semibold mb-1">Opening Hours</h3>
-                <div className="text-sm text-muted-foreground space-y-0.5">
-                  <p>Mon – Fri: 9:00 AM – 8:00 PM</p>
-                  <p>Saturday: 9:00 AM – 6:00 PM</p>
-                  <p>Sunday: 10:00 AM – 4:00 PM</p>
+                <h3 className="font-semibold mb-1 text-gold">{t("contact.hours")}</h3>
+                <div className="text-sm text-gold/70 space-y-0.5">
+                  <p>{t("contact.hours_mf")}</p>
+                  <p>{t("contact.hours_sat")}</p>
+                  <p>{t("contact.hours_sun")}</p>
                 </div>
               </div>
             </div>
-            <div className="relative h-48 rounded-2xl overflow-hidden border border-border bg-card">
+
+            {/* Map placeholder → Google Maps link */}
+            <div className="relative h-48 rounded-2xl overflow-hidden border border-border bg-card hover:border-gold/40 transition-colors">
               <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center">
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center"
+              >
                 <div className="text-center">
                   <MapPin className="h-8 w-8 text-gold mx-auto mb-2" />
-                  <p className="text-sm font-medium">{t('contact.mapView')}</p>
-                  <p className="text-xs text-muted-foreground">123 King Street, NY</p>
+                  <p className="text-sm font-medium text-gold">{t("contact.mapView")}</p>
+                  <p className="text-xs text-gold/60 mt-1">Everstinkuja 1, Espoo</p>
                 </div>
-              </div>
+              </a>
               <div
-                className="absolute inset-0 opacity-20"
+                className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{
                   backgroundImage:
                     "linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px)",
@@ -260,26 +304,28 @@ function Contact() {
               />
             </div>
           </div>
+
+          {/* Contact Form — mailto: */}
           <form
             onSubmit={onSubmit}
             className="bg-card border border-border rounded-2xl p-8 space-y-4 shadow-elegant"
           >
-            <h3 className="font-display text-2xl font-semibold mb-2">{t('contact.sendMessage')}</h3>
+            <h3 className="font-display text-2xl font-semibold mb-2 text-gold">{t("contact.sendMessage")}</h3>
             <Input
-              placeholder={t('contact.namePlaceholder')}
+              placeholder={t("contact.namePlaceholder")}
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               maxLength={100}
             />
             <Input
               type="email"
-              placeholder={t('contact.emailPlaceholder')}
+              placeholder={t("contact.emailPlaceholder")}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               maxLength={255}
             />
             <Textarea
-              placeholder={t('contact.messagePlaceholder')}
+              placeholder={t("contact.messagePlaceholder")}
               rows={5}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -287,9 +333,9 @@ function Contact() {
             />
             <Button
               type="submit"
-              className="w-full bg-gradient-gold text-gold-foreground hover:opacity-90"
+              className="w-full bg-gradient-gold text-black font-semibold hover:opacity-90"
             >
-              <Send className="h-4 w-4 mr-2" /> {t('contact.sendBtn')}
+              <Send className="h-4 w-4 mr-2" /> {t("contact.sendBtn")}
             </Button>
           </form>
         </div>
