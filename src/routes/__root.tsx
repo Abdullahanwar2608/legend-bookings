@@ -15,7 +15,7 @@ function NotFoundComponent() {
         <div className="flex items-center justify-center gap-2 mb-10">
           <Scissors className="h-5 w-5" style={{ color: "#FFE000" }} />
           <span className="font-display text-lg font-bold tracking-wide" style={{ color: "#FFE000" }}>
-            LEGEND BARBER
+            LEGEND FADE
           </span>
         </div>
 

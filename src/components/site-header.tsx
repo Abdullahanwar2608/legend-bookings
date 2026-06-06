@@ -41,7 +41,7 @@ export function SiteHeader() {
             className="font-display text-lg font-bold tracking-wide"
             style={{ color: "#FFE000" }}
           >
-            LEGEND BARBER
+            LEGEND FADE
           </span>
         </Link>
 

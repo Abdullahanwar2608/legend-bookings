@@ -29,24 +29,24 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Legend Barber | Premium Parturi Espoo" },
+      { title: "Legend Fade | Premium Parturi Espoo" },
       {
         name: "description",
         content:
-          "Legend Barber – parturi Espoossa. Hiustenleikkaus 15€, partapalvelut, lasten leikkaukset. Everstinkuja 1, 02600 Espoo. Barber Shop Espoo.",
+          "Legend Fade – parturi Espoossa. Hiustenleikkaus 15€, partapalvelut, lasten leikkaukset. Everstinkuja 1, 02600 Espoo. Barber Shop Espoo.",
       },
-      { name: "keywords", content: "parturi espoo, barber shop espoo, haircut everstinkuja, mens haircut espoo, legend barber" },
+      { name: "keywords", content: "parturi espoo, barber shop espoo, haircut everstinkuja, mens haircut espoo, legend fade" },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Legend Barber | Premium Parturi Espoo" },
+      { property: "og:title", content: "Legend Fade | Premium Parturi Espoo" },
       {
         property: "og:description",
         content: "Parturi Espoossa – hiustenleikkaus alkaen 15€. Everstinkuja 1, 02600 Espoo. Baraa aika nyt! Barber Espoo.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://legend-bookings.vercel.app" },
-      { property: "og:site_name", content: "Legend Barber" },
+      { property: "og:site_name", content: "Legend Fade" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Legend Barber | Premium Parturi Espoo" },
+      { name: "twitter:title", content: "Legend Fade | Premium Parturi Espoo" },
       { name: "twitter:description", content: "Parturi Espoossa. Hiustenleikkaus, parta, lasten leikkaukset. Everstinkuja 1, Espoo." },
     ],
   }),
@@ -73,7 +73,7 @@ const REVIEWS = [
 const JSON_LD = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "HairSalon"],
-  name: "Legend Barber",
+  name: "Legend Fade",
   url: "https://legend-bookings.vercel.app",
   telephone: "+358449299266",
   email: "legend.service.2810@gmail.com",

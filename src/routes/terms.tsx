@@ -9,11 +9,11 @@ export const Route = createFileRoute("/terms")({
   component: TermsPage,
   head: () => ({
     meta: [
-      { title: "Terms of Service | Legend Barber Espoo" },
+      { title: "Terms of Service | Legend Fade Espoo" },
       {
         name: "description",
         content:
-          "Terms of service for Legend Barber Espoo. Booking, cancellation and payment policies. Everstinkuja 1, 02600 Espoo.",
+          "Terms of service for Legend Fade Espoo. Booking, cancellation and payment policies. Everstinkuja 1, 02600 Espoo.",
       },
       { name: "robots", content: "index, follow" },
     ],
@@ -33,7 +33,7 @@ function TermsPage() {
         {
           icon: <FileText className="h-5 w-5 text-gold mt-0.5 shrink-0" />,
           title: "1. Palvelut",
-          body: "Legend Barber tarjoaa parturi- ja kampaamopalveluita Espoossa, osoitteessa Everstinkuja 1, 02600 Espoo. Varaamalla ajan hyväksyt nämä käyttöehdot kokonaisuudessaan.",
+          body: "Legend Fade tarjoaa parturi- ja kampaamopalveluita Espoossa, osoitteessa Everstinkuja 1, 02600 Espoo. Varaamalla ajan hyväksyt nämä käyttöehdot kokonaisuudessaan.",
         },
         {
           icon: <AlertCircle className="h-5 w-5 text-gold mt-0.5 shrink-0" />,
@@ -53,7 +53,7 @@ function TermsPage() {
         {
           icon: <Ban className="h-5 w-5 text-gold mt-0.5 shrink-0" />,
           title: "5. Vastuunrajoitus",
-          body: "Legend Barber ei ole vastuussa mistään epäsuorista vahingoista, jotka johtuvat palvelujemme käytöstä. Korvausvastuu rajoittuu aina enintään kyseisen palvelun hintaan.",
+          body: "Legend Fade ei ole vastuussa mistään epäsuorista vahingoista, jotka johtuvat palvelujemme käytöstä. Korvausvastuu rajoittuu aina enintään kyseisen palvelun hintaan.",
         },
         {
           icon: <FileText className="h-5 w-5 text-gold mt-0.5 shrink-0" />,
@@ -65,7 +65,7 @@ function TermsPage() {
         {
           icon: <FileText className="h-5 w-5 text-gold mt-0.5 shrink-0" />,
           title: "1. Services",
-          body: "Legend Barber provides barbershop and grooming services in Espoo at Everstinkuja 1, 02600 Espoo, Finland. By booking an appointment, you agree to these terms in full.",
+          body: "Legend Fade provides barbershop and grooming services in Espoo at Everstinkuja 1, 02600 Espoo, Finland. By booking an appointment, you agree to these terms in full.",
         },
         {
           icon: <AlertCircle className="h-5 w-5 text-gold mt-0.5 shrink-0" />,
@@ -85,7 +85,7 @@ function TermsPage() {
         {
           icon: <Ban className="h-5 w-5 text-gold mt-0.5 shrink-0" />,
           title: "5. Limitation of Liability",
-          body: "Legend Barber is not liable for any indirect or consequential damages arising from the use of our services. Our liability is always capped at the price of the service rendered.",
+          body: "Legend Fade is not liable for any indirect or consequential damages arising from the use of our services. Our liability is always capped at the price of the service rendered.",
         },
         {
           icon: <FileText className="h-5 w-5 text-gold mt-0.5 shrink-0" />,
@@ -120,8 +120,8 @@ function TermsPage() {
           {/* Intro */}
           <div className="rounded-2xl border p-6 mb-8 text-sm leading-relaxed opacity-80" style={{ borderColor: "rgba(255,224,0,0.2)", background: "#0f0f00" }}>
             {isFi
-              ? "Nämä käyttöehdot koskevat kaikkia Legend Barberin palveluita ja verkkosivustoa. Palveluitamme käyttämällä sitoudut noudattamaan näitä ehtoja."
-              : "These terms of service apply to all Legend Barber services and the website. By using our services, you agree to comply with these terms."}
+              ? "Nämä käyttöehdot koskevat kaikkia Legend Fadein palveluita ja verkkosivustoa. Palveluitamme käyttämällä sitoudut noudattamaan näitä ehtoja."
+              : "These terms of service apply to all Legend Fade services and the website. By using our services, you agree to comply with these terms."}
           </div>
 
           {/* Sections */}
@@ -141,7 +141,7 @@ function TermsPage() {
           <div className="mt-10 rounded-2xl border p-6 flex items-start gap-4" style={{ borderColor: "rgba(255,224,0,0.25)", background: "#0f0f00" }}>
             <MapPin className="h-5 w-5 mt-0.5 shrink-0" style={{ color: "#FFE000" }} />
             <div className="text-sm" style={{ color: "rgba(255,224,0,0.75)" }}>
-              <p className="font-semibold mb-1" style={{ color: "#FFE000" }}>Legend Barber</p>
+              <p className="font-semibold mb-1" style={{ color: "#FFE000" }}>Legend Fade</p>
               <p>Everstinkuja 1, 02600 Espoo, Finland</p>
               <p>+358 44 9299266</p>
               <a href="mailto:legend.service.2810@gmail.com" className="hover:opacity-100 opacity-75 underline underline-offset-2">

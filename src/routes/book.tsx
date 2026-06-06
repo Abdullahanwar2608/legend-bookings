@@ -58,33 +58,33 @@ export const Route = createFileRoute("/book")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Book Appointment | Legend Barber Espoo" },
+      { title: "Book Appointment | Legend Fade Espoo" },
       {
         name: "description",
         content:
-          "Book your haircut, beard trim or shave at Legend Barber Espoo. Quick online booking. Everstinkuja 1, 02600 Espoo. Parturi Espoo.",
+          "Book your haircut, beard trim or shave at Legend Fade Espoo. Quick online booking. Everstinkuja 1, 02600 Espoo. Parturi Espoo.",
       },
       { name: "robots", content: "index, follow" },
       // Open Graph — Facebook & WhatsApp
-      { property: "og:title", content: "Book Appointment | Legend Barber Espoo" },
+      { property: "og:title", content: "Book Appointment | Legend Fade Espoo" },
       {
         property: "og:description",
         content:
-          "Reserve your slot at Legend Barber in seconds. Haircut from 15€. Everstinkuja 1, 02600 Espoo, Finland.",
+          "Reserve your slot at Legend Fade in seconds. Haircut from 15€. Everstinkuja 1, 02600 Espoo, Finland.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://legend-bookings.vercel.app/book" },
-      { property: "og:site_name", content: "Legend Barber" },
+      { property: "og:site_name", content: "Legend Fade" },
       { property: "og:image", content: "https://legend-bookings.vercel.app/images/hero-bg.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Legend Barber Espoo - Book Appointment" },
+      { property: "og:image:alt", content: "Legend Fade Espoo - Book Appointment" },
       // Twitter Card
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Book Appointment | Legend Barber Espoo" },
+      { name: "twitter:title", content: "Book Appointment | Legend Fade Espoo" },
       {
         name: "twitter:description",
-        content: "Reserve your slot at Legend Barber. Haircut from 15€. Espoo, Finland.",
+        content: "Reserve your slot at Legend Fade. Haircut from 15€. Espoo, Finland.",
       },
       { name: "twitter:image", content: "https://legend-bookings.vercel.app/images/hero-bg.jpg" },
     ],

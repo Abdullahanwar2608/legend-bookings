@@ -9,11 +9,11 @@ export const Route = createFileRoute("/privacy-policy")({
   component: PrivacyPolicyPage,
   head: () => ({
     meta: [
-      { title: "Privacy Policy | Legend Barber Espoo" },
+      { title: "Privacy Policy | Legend Fade Espoo" },
       {
         name: "description",
         content:
-          "Legend Barber privacy policy. GDPR-compliant data practices for our Espoo barbershop. Everstinkuja 1, 02600 Espoo.",
+          "Legend Fade privacy policy. GDPR-compliant data practices for our Espoo barbershop. Everstinkuja 1, 02600 Espoo.",
       },
       { name: "robots", content: "index, follow" },
     ],
@@ -120,8 +120,8 @@ function PrivacyPolicyPage() {
           {/* Intro */}
           <div className="rounded-2xl border p-6 mb-8 text-sm leading-relaxed opacity-80" style={{ borderColor: "rgba(255,224,0,0.2)", background: "#0f0f00" }}>
             {isFi
-              ? "Legend Barber (\"me\", \"meidän\") kunnioittaa yksityisyyttäsi ja on sitoutunut suojelemaan henkilötietojasi EU:n yleisen tietosuoja-asetuksen (GDPR) mukaisesti. Tämä seloste kuvaa, miten keräämme, käytämme ja suojaamme tietojasi."
-              : "Legend Barber (\"we\", \"us\") respects your privacy and is committed to protecting your personal data in accordance with the EU General Data Protection Regulation (GDPR). This policy describes how we collect, use, and protect your data."}
+              ? "Legend Fade (\"me\", \"meidän\") kunnioittaa yksityisyyttäsi ja on sitoutunut suojelemaan henkilötietojasi EU:n yleisen tietosuoja-asetuksen (GDPR) mukaisesti. Tämä seloste kuvaa, miten keräämme, käytämme ja suojaamme tietojasi."
+              : "Legend Fade (\"we\", \"us\") respects your privacy and is committed to protecting your personal data in accordance with the EU General Data Protection Regulation (GDPR). This policy describes how we collect, use, and protect your data."}
           </div>
 
           {/* Sections */}
@@ -141,7 +141,7 @@ function PrivacyPolicyPage() {
           <div className="mt-10 rounded-2xl border p-6 flex items-start gap-4" style={{ borderColor: "rgba(255,224,0,0.25)", background: "#0f0f00" }}>
             <MapPin className="h-5 w-5 mt-0.5 shrink-0" style={{ color: "#FFE000" }} />
             <div className="text-sm" style={{ color: "rgba(255,224,0,0.75)" }}>
-              <p className="font-semibold mb-1" style={{ color: "#FFE000" }}>Legend Barber</p>
+              <p className="font-semibold mb-1" style={{ color: "#FFE000" }}>Legend Fade</p>
               <p>Everstinkuja 1, 02600 Espoo, Finland</p>
               <p>+358 44 9299266</p>
               <a href="mailto:legend.service.2810@gmail.com" className="hover:opacity-100 opacity-75 underline underline-offset-2">

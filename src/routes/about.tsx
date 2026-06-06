@@ -9,14 +9,14 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About Us | Legend Barber Espoo" },
+      { title: "About Us | Legend Fade Espoo" },
       {
         name: "description",
         content:
-          "Legend Barber — premium barber shop in Espoo. Expert cuts, beard trims & shaves. Everstinkuja 1, 02600 Espoo. Parturi Espoo.",
+          "Legend Fade — premium barber shop in Espoo. Expert cuts, beard trims & shaves. Everstinkuja 1, 02600 Espoo. Parturi Espoo.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "About | Legend Barber Espoo" },
+      { property: "og:title", content: "About | Legend Fade Espoo" },
       {
         property: "og:description",
         content: "Premium barbershop in Espoo. Expert grooming since 2010. Everstinkuja 1, 02600 Espoo.",
@@ -80,12 +80,12 @@ function AboutPage() {
               {isFi ? "— MEISTÄ —" : "— ABOUT US —"}
             </p>
             <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: "#FFE000" }}>
-              Legend Barber
+              Legend Fade
             </h1>
             <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto" style={{ color: "rgba(255,224,0,0.75)" }}>
               {isFi
-                ? "Espoon sydämessä toimiva Legend Barber on enemmän kuin parturi — se on kokemus. Perustettu intohimosta hiustenleikkaukseen ja miesten hyvinvointiin."
-                : "Based in the heart of Espoo, Legend Barber is more than a barbershop — it's an experience. Founded on a passion for precision cutting and men's grooming."}
+                ? "Espoon sydämessä toimiva Legend Fade on enemmän kuin parturi — se on kokemus. Perustettu intohimosta hiustenleikkaukseen ja miesten hyvinvointiin."
+                : "Based in the heart of Espoo, Legend Fade is more than a barbershop — it's an experience. Founded on a passion for precision cutting and men's grooming."}
             </p>
           </div>
         </section>
@@ -117,13 +117,13 @@ function AboutPage() {
               <div className="space-y-4 text-sm leading-relaxed" style={{ color: "rgba(255,224,0,0.75)" }}>
                 {isFi ? (
                   <>
-                    <p>Legend Barber syntyi yhdestä yksinkertaisesta ajatuksesta: jokainen mies ansaitsee ensiluokkaisen parturikokemuksen. Espoo ansaitsee parturin, joka ymmärtää modernin miehen tarpeet.</p>
+                    <p>Legend Fade syntyi yhdestä yksinkertaisesta ajatuksesta: jokainen mies ansaitsee ensiluokkaisen parturikokemuksen. Espoo ansaitsee parturin, joka ymmärtää modernin miehen tarpeet.</p>
                     <p>Vuodesta 2010 alkaen olemme palvelleet espoolaisia — paikallisia asukkaita, perheitä ja ammattilaisia — tarjoten leikkauksia, partapalveluita ja täydellisiä viimeistelyitä.</p>
                     <p>Sijaitsemme Everstinkujalla, jossa sinua odottaa aina lämmin vastaanotto, tarkka työ ja hyvä fiilis.</p>
                   </>
                 ) : (
                   <>
-                    <p>Legend Barber was born from one simple idea: every man deserves a first-class barbershop experience. And Espoo deserves a barber who truly understands the modern man.</p>
+                    <p>Legend Fade was born from one simple idea: every man deserves a first-class barbershop experience. And Espoo deserves a barber who truly understands the modern man.</p>
                     <p>Since 2010, we have been serving the people of Espoo — locals, families, and professionals — delivering cuts, beard services, and immaculate finishes.</p>
                     <p>Located on Everstinkuja, you'll always find a warm welcome, sharp work, and good energy waiting for you.</p>
                   </>
