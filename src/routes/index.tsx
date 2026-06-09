@@ -10,17 +10,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
-import haircutImg from "@/assets/haircut.webp";
-import beardTrimImg from "@/assets/beardtrim.webp";
-import shaveImg from "@/assets/shave.webp";
-import kidsCutImg from "@/assets/kidscut.webp";
+import { getServiceIcon, MustacheIcon } from "@/components/service-icons";
 
-const SERVICE_IMAGES: Record<string, string> = {
-  "Haircut": haircutImg,
-  "Beard Trim": beardTrimImg,
-  "Shave": shaveImg,
-  "Kids Cut": kidsCutImg,
-};
+
 
 const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Everstinkuja+1%2C+02600%2C+Espoo";
@@ -181,37 +173,33 @@ function Services() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             {t("services.title")} <span className="text-gradient-gold">{t("services.titleHighlight")}</span>
           </h2>
+          {/* Mustache divider */}
+          <div className="flex items-center justify-center mt-4 mb-2">
+            <MustacheIcon className="h-6 w-10" style={{ color: "#FFE000", opacity: 0.7 }} />
+          </div>
           <p className="text-gold/60 max-w-xl mx-auto">
             {t("services.desc")}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
             <div
               key={s.id}
-              className="group relative bg-card border border-border rounded-2xl p-7 hover:border-gold/50 transition-all duration-500 hover:-translate-y-1 shadow-elegant flex flex-col"
+              className="group relative bg-card border border-border rounded-2xl p-8 hover:border-gold/50 transition-all duration-500 hover:-translate-y-1 shadow-elegant flex flex-col items-center text-center"
             >
-              {SERVICE_IMAGES[s.name] && (
-                <div className="mb-4 -mx-7 -mt-7 overflow-hidden rounded-t-2xl bg-card">
-                  <img
-                    src={SERVICE_IMAGES[s.name]}
-                    alt={s.name}
-                    loading="lazy"
-                    decoding="async"
-                    width={600}
-                    height={400}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              )}
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-semibold text-gold">{s.name}</h3>
-                <span className="text-2xl font-display text-gradient-gold font-bold">
-                  €{s.price}
-                </span>
+              {/* Service icon */}
+              <div className="mb-5 flex items-center justify-center h-20 w-20 rounded-full border-2 border-gold/30 bg-gold/5 group-hover:border-gold/60 group-hover:bg-gold/10 transition-all duration-300">
+                {getServiceIcon(s.name, {
+                  className: "h-10 w-10",
+                  style: { color: "#FFE000" },
+                })}
               </div>
+              <h3 className="text-xl font-semibold text-gold mb-1">{s.name}</h3>
+              <span className="text-2xl font-display text-gradient-gold font-bold mb-3">
+                €{s.price}
+              </span>
               <p className="text-sm text-gold/60 mb-4 leading-relaxed">{s.description}</p>
-              <div className="flex items-center justify-between pt-4 border-t border-border/50">
+              <div className="flex items-center justify-between w-full pt-4 border-t border-border/50 mt-auto">
                 <span className="text-xs text-gold/50">{s.duration}</span>
                 <Link
                   to="/book"

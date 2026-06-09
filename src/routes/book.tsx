@@ -23,17 +23,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
-import haircutImg from "@/assets/haircut.webp";
-import beardTrimImg from "@/assets/beardtrim.webp";
-import shaveImg from "@/assets/shave.webp";
-import kidsCutImg from "@/assets/kidscut.webp";
-
-const SERVICE_IMAGES: Record<string, string> = {
-  "Haircut": haircutImg,
-  "Beard Trim": beardTrimImg,
-  "Shave": shaveImg,
-  "Kids Cut": kidsCutImg,
-};
+import { getServiceIcon } from "@/components/service-icons";
 
 function formatDate(d: Date): string {
   const y = d.getFullYear();
@@ -262,17 +252,17 @@ function BookPage() {
                         onClick={() => setServiceId(s.id)}
                         className={`text-left p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${serviceId === s.id ? "border-gold bg-gold/5" : "border-border hover:border-gold/40"}`}
                       >
-                        {SERVICE_IMAGES[s.name] && (
-                          <img
-                            src={SERVICE_IMAGES[s.name]}
-                            alt={s.name}
-                            loading="lazy"
-                            decoding="async"
-                            width={128}
-                            height={128}
-                            className="h-16 w-16 rounded-md object-cover flex-shrink-0"
-                          />
-                        )}
+                        {/* Service icon replacing photo */}
+                        <div className={`flex-shrink-0 h-14 w-14 rounded-xl flex items-center justify-center border transition-all duration-200 ${
+                          serviceId === s.id
+                            ? "border-gold bg-gold/10"
+                            : "border-border/60 bg-card"
+                        }`}>
+                          {getServiceIcon(s.name, {
+                            className: "h-7 w-7",
+                            style: { color: "#FFE000" },
+                          })}
+                        </div>
                         <div className="flex-1">
                           <div className="flex justify-between items-start mb-1">
                             <span className="font-semibold">{s.name}</span>
