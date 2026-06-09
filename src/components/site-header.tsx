@@ -1,9 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Scissors, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { MustacheIcon } from "./service-icons";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -36,8 +35,8 @@ export function SiteHeader() {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
-          {/* Mustache branding icon */}
-          <MustacheIcon className="h-7 w-9" style={{ color: "#FFE000" }} />
+          {/* Pure yellow logo icon */}
+          <Scissors className="h-5 w-5" style={{ color: "#FFE000" }} />
           <span
             className="font-display text-lg font-bold tracking-wide"
             style={{ color: "#FFE000" }}

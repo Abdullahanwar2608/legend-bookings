@@ -2,9 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { useTranslation } from "react-i18next";
-import { Award, Clock, MapPin, Star, Heart, Scissors } from "lucide-react";
+import { Scissors, Award, Clock, MapPin, Star, Heart } from "lucide-react";
 import { useEffect } from "react";
-import { MustacheIcon } from "@/components/service-icons";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -110,7 +109,7 @@ function AboutPage() {
           <div className="container mx-auto max-w-3xl">
             <div className="rounded-2xl border p-8 md:p-10" style={{ borderColor: "rgba(255,224,0,0.2)", background: "#0a0a00" }}>
               <div className="flex items-center gap-3 mb-6">
-                <MustacheIcon className="h-7 w-9" style={{ color: "#FFE000" }} />
+                <Scissors className="h-6 w-6" style={{ color: "#FFE000" }} />
                 <h2 className="font-display text-2xl font-bold" style={{ color: "#FFE000" }}>
                   {isFi ? "Tarinamme" : "Our Story"}
                 </h2>

@@ -1,8 +1,8 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
+import { Scissors } from "lucide-react";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { MustacheIcon } from "@/components/service-icons";
 
 function NotFoundComponent() {
   return (
@@ -13,7 +13,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2 mb-10">
-          <MustacheIcon className="h-7 w-9" style={{ color: "#FFE000" }} />
+          <Scissors className="h-5 w-5" style={{ color: "#FFE000" }} />
           <span className="font-display text-lg font-bold tracking-wide" style={{ color: "#FFE000" }}>
             LEGEND FADE
           </span>

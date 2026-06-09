@@ -1,6 +1,6 @@
+import { Scissors } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "@tanstack/react-router";
-import { MustacheIcon } from "./service-icons";
 
 export function SiteFooter() {
   const { t, i18n } = useTranslation();
@@ -14,7 +14,7 @@ export function SiteFooter() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <MustacheIcon className="h-6 w-9" style={{ color: "#FFE000" }} />
+              <Scissors className="h-4 w-4" style={{ color: "#FFE000" }} />
               <span className="font-display tracking-wide uppercase font-bold" style={{ color: "#FFE000" }}>
                 {t("footer.brand")}
               </span>
