@@ -35,25 +35,32 @@ const STATS = [
 
 const VALUES = [
   {
+    icon: <Scissors className="h-6 w-6" style={{ color: "#FFE000" }} />,
+    titleFi: "ASIANTUNTEVAT PARTURIT",
+    titleEn: "EXPERT BARBERS",
+    bodyFi: "Ammattilaiset, joihin voit luottaa.",
+    bodyEn: "Skilled professionals you can trust.",
+  },
+  {
     icon: <Award className="h-6 w-6" style={{ color: "#FFE000" }} />,
-    titleFi: "Laatu ennen kaikkea",
-    titleEn: "Quality First",
-    bodyFi: "Käytämme vain parhaita välineitä ja tuotteita varmistaaksemme ensiluokkaisen lopputuloksen joka kerta.",
-    bodyEn: "We use only the best tools and products to ensure a premium result every single time.",
+    titleFi: "PREMIUM-TUOTTEET",
+    titleEn: "PREMIUM PRODUCTS",
+    bodyFi: "Käytämme vain parhaita tuotteita.",
+    bodyEn: "We use only the best products.",
   },
   {
     icon: <Heart className="h-6 w-6" style={{ color: "#FFE000" }} />,
-    titleFi: "Asiakaslähtöisyys",
-    titleEn: "Client-Focused",
-    bodyFi: "Jokainen asiakas saa henkilökohtaista palvelua. Kuuntelemme toiveesi ja toteutamme ne tarkasti.",
-    bodyEn: "Every client receives personalised service. We listen to your wishes and execute them with precision.",
+    titleFi: "RENTO ILMAPIIRI",
+    titleEn: "RELAXED ATMOSPHERE",
+    bodyFi: "Tunne olosi kotoisaksi, kun me huolehdimme sinusta.",
+    bodyEn: "Feel at home while we take care of you.",
   },
   {
-    icon: <Scissors className="h-6 w-6" style={{ color: "#FFE000" }} />,
-    titleFi: "Ammattitaito",
-    titleEn: "Craftsmanship",
-    bodyFi: "Partureillamme on vuosien kokemus ja koulutus. Jokainen leikkaus on taideteos.",
-    bodyEn: "Our barbers are trained and experienced. Every cut is a work of art.",
+    icon: <Star className="h-6 w-6" style={{ color: "#FFE000" }} />,
+    titleFi: "ENSILUOKKAINEN PALVELU",
+    titleEn: "TOP QUALITY SERVICE",
+    bodyFi: "Jokainen leikkaus tehdään tarkasti.",
+    bodyEn: "Every cut is done with precision.",
   },
 ];
 
@@ -77,15 +84,15 @@ function AboutPage() {
           }} />
           <div className="relative container mx-auto max-w-3xl">
             <p className="tracking-[0.4em] text-xs mb-4 opacity-60">
-              {isFi ? "— MEISTÄ —" : "— ABOUT US —"}
+              {isFi ? "— TIETOA MEISTÄ —" : "— ABOUT LEGEND FADE —"}
             </p>
             <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: "#FFE000" }}>
               Legend Fade
             </h1>
             <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto" style={{ color: "rgba(255,224,0,0.75)" }}>
               {isFi
-                ? "Espoon sydämessä toimiva Legend Fade on enemmän kuin parturi — se on kokemus. Perustettu intohimosta hiustenleikkaukseen ja miesten hyvinvointiin."
-                : "Based in the heart of Espoo, Legend Fade is more than a barbershop — it's an experience. Founded on a passion for precision cutting and men's grooming."}
+                ? "Legend Fadessa kyse on paljon enemmästä kuin pelkkästä hiustenleikkauksesta – kyse on itseluottamuksesta, tyylistä ja hyvästä fiiliksestä. Tarjoamme siistit leikkaukset, tarkat häivytykset ja ensiluokkaisen kokemuksen joka kerta."
+                : "At Legend Fade, it\u2019s more than just a haircut \u2013 it\u2019s about confidence, style and good vibes. We deliver clean cuts, sharp fades and a top-notch experience every time."}
             </p>
           </div>
         </section>
@@ -137,9 +144,9 @@ function AboutPage() {
         <section className="py-12 px-6">
           <div className="container mx-auto max-w-4xl">
             <h2 className="font-display text-3xl font-bold text-center mb-10" style={{ color: "#FFE000" }}>
-              {isFi ? "Arvomme" : "Our Values"}
+              {isFi ? "Miksi valita meidät" : "Why Choose Us"}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {VALUES.map((v, i) => (
                 <div key={i} className="rounded-2xl border p-7 text-center" style={{ borderColor: "rgba(255,224,0,0.18)", background: "#0a0a00" }}>
                   <div className="inline-flex items-center justify-center h-14 w-14 rounded-full border mb-5" style={{ borderColor: "rgba(255,224,0,0.3)" }}>
