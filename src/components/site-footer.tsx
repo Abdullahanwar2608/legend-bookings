@@ -57,7 +57,7 @@ export function SiteFooter() {
               </p>
               <ul className="space-y-2">
                 {[
-                  { to: "/privacy-policy" as const, label: isFi ? "Tietosuoja" : "Privacy Policy" },
+                  { to: "/privacy-policy" as const, label: isFi ? "Tietosuojakäytäntö" : "Privacy Policy" },
                   { to: "/terms" as const, label: isFi ? "Käyttöehdot" : "Terms of Service" },
                   { to: "/cookie-policy" as const, label: isFi ? "Evästekäytäntö" : "Cookie Policy" },
                 ].map((l) => (

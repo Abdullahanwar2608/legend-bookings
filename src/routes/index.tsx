@@ -57,17 +57,20 @@ const REVIEWS = [
   {
     name: "Marcus T.",
     rating: 5,
-    text: "Best haircut I've had in years. The attention to detail is unmatched. Truly a premium experience.",
+    textEn: "Best haircut I've had in years. The attention to detail is unmatched. Truly a premium experience.",
+    textFi: "Paras hiustenleikkaus vuosiin. Huomio yksityiskohtiin on vertaansa vailla. Aidosti ensiluokkainen kokemus.",
   },
   {
     name: "Daniel R.",
     rating: 5,
-    text: "The hot towel shave is a ritual. I leave feeling like a new man every single time.",
+    textEn: "The hot towel shave is a ritual. I leave feeling like a new man every single time.",
+    textFi: "Lämpimällä pyyhkellä tehtävä parranajo on kuin rituaali. Lähden joka kerta kuin uutena miehenä.",
   },
   {
     name: "Anthony L.",
     rating: 5,
-    text: "Atmosphere, skill, and service are all top-tier. Legend lives up to the name.",
+    textEn: "Atmosphere, skill, and service are all top-tier. Legend lives up to the name.",
+    textFi: "Tunnelma, ammattitaito ja palvelu ovat huipputasoa. Legend Fade todella ansaitsee nimensä.",
   },
 ];
 
@@ -231,7 +234,8 @@ function Services() {
 }
 
 function Reviews() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isFi = i18n.language === "fi";
   return (
     <section id="reviews" className="py-24 px-6 bg-card/30">
       <div className="container mx-auto max-w-6xl">
@@ -249,7 +253,7 @@ function Reviews() {
                   <Star key={j} className="h-4 w-4 fill-gold text-gold" />
                 ))}
               </div>
-              <p className="text-gold/70 italic mb-6 leading-relaxed">"{r.text}"</p>
+              <p className="text-gold/70 italic mb-6 leading-relaxed">"{isFi ? r.textFi : r.textEn}"</p>
               <p className="font-semibold text-sm text-gold">{r.name}</p>
             </div>
           ))}

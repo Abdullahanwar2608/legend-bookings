@@ -5,7 +5,7 @@
     "reviews": "Arvostelut",
     "bookNow": "Varaa aika",
     "contact": "Yhteystiedot",
-    "about": "Meistä"
+    "about": "Tietoa meistä"
   },
   "hero": {
     "title": "Legend Fade",
@@ -15,10 +15,10 @@
     "bookAppt": "Varaa aika"
   },
   "services": {
-    "title": "Laadukkaat",
-    "titleHighlight": "Palvelut",
-    "subtitle": "— OSAAMISEMME —",
-    "desc": "Jokainen palvelu toteutetaan tarkkuudella, huolella ja parhailla välineillä.",
+    "title": "Premium",
+    "titleHighlight": "palvelut",
+    "subtitle": "— AMMATTITAITOMME —",
+    "desc": "Jokainen palvelu toteutetaan tarkkuudella, huolella ja parhailla työvälineillä.",
     "haircut": "Hiustenleikkaus",
     "beardTrim": "Parran siistiminen",
     "shave": "Ajo",
@@ -34,7 +34,7 @@
   "contact": {
     "subtitle": "— OTA YHTEYTTÄ —",
     "title": "Vieraile",
-    "titleHighlight": "Luonamme",
+    "titleHighlight": "meillä",
     "address": "Osoite",
     "phone": "Puhelin",
     "email": "Sähköposti",
@@ -42,7 +42,7 @@
     "mapView": "Avaa Google Mapsissa",
     "sendMessage": "Lähetä viesti",
     "namePlaceholder": "Nimesi",
-    "emailPlaceholder": "Sähköpostisi",
+    "emailPlaceholder": "Sähköpostiosoitteesi",
     "messagePlaceholder": "Viestisi",
     "sendBtn": "Lähetä viesti",
     "addressValue": "Everstinkuja 1, 02600, Espoo",
@@ -88,7 +88,7 @@
   },
   "footer": {
     "rights": "Kaikki oikeudet pidätetään.",
-    "about": "Laadukkaat parturi-palvelut Espoossa, Suomessa.",
+    "about": "Ensiluokkaiset parturi- ja grooming-palvelut Espoossa, Suomessa.",
     "brand": "Legend Fade"
   }
 }

@@ -165,7 +165,7 @@ function AboutPage() {
             </div>
             <p className="text-lg italic mb-2" style={{ color: "rgba(255,224,0,0.8)" }}>
               {isFi
-                ? "\"Paras hiustenleikkaus, jonka olen koskaan saanut. Yksityiskohtiin kiinnitetty huomio on vertaansa vailla.\""
+                ? "\"Paras hiustenleikkaus vuosiin. Huomio yksityiskohtiin on vertaansa vailla. Aidosti ensiluokkainen kokemus.\""
                 : "\"Best haircut I've had in years. The attention to detail is unmatched. Truly a premium experience.\""}
             </p>
             <p className="text-sm opacity-50">— Marcus T.</p>
