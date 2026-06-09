@@ -20,6 +20,7 @@ const SERVICE_IMAGES: Record<string, string> = {
   "Beard Trim": beardTrimImg,
   "Shave": shaveImg,
   "Kids Cut": kidsCutImg,
+  "Haircut & Beard": haircutImg,
 };
 
 const GOOGLE_MAPS_URL =
