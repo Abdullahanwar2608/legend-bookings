@@ -262,11 +262,16 @@ function Reviews() {
 function Contact() {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [consent, setConsent] = useState(false);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error(t("contact.namePlaceholder") ? "Please fill in all fields." : "Please fill in all fields.");
+      return;
+    }
+    if (!consent) {
+      toast.error(t("contact.consentRequired"));
       return;
     }
     // mailto: — opens the user's email client with the message pre-filled
@@ -404,6 +409,23 @@ function Contact() {
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               maxLength={1000}
             />
+            {/* GDPR Consent Checkbox — text from drive document */}
+            <label className="flex items-start gap-3 cursor-pointer group">
+              <input
+                id="contact-consent"
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="mt-1 h-4 w-4 shrink-0 cursor-pointer accent-yellow-400"
+              />
+              <span className="text-xs leading-relaxed" style={{ color: "rgba(255,224,0,0.6)" }}>
+                {t("contact.consentShort")}{" "}
+                <Link to="/privacy-policy" className="underline underline-offset-2 hover:opacity-100" style={{ color: "rgba(255,224,0,0.85)" }}>
+                  {t("contact.consentPrivacy")}
+                </Link>
+                .
+              </span>
+            </label>
             <Button
               type="submit"
               className="w-full bg-gradient-gold text-black font-semibold hover:opacity-90"

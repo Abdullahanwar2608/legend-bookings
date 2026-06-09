@@ -50,7 +50,10 @@
     "emailValue": "legend.service.2810@gmail.com",
     "hours_mf": "Ma – Pe: 10:00 – 20:00",
     "hours_sat": "La: 10:00 – 18:00",
-    "hours_sun": "Su: 12:00 – 18:00"
+    "hours_sun": "Su: 12:00 – 18:00",
+    "consentShort": "Hyväksyn, että Legend Fade voi tallentaa ja käsitellä tässä lomakkeessa antamiani tietoja yhteydenottooni vastaamista varten. Olen lukenut ja hyväksyn",
+    "consentPrivacy": "tietosuojakäytännön",
+    "consentRequired": "Hyväksy tietosuojakäytäntö lähettääksesi viestin."
   },
   "booking": {
     "subtitle": "— VARAUS —",

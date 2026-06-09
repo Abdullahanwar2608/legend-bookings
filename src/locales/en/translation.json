@@ -50,7 +50,10 @@
     "emailValue": "legend.service.2810@gmail.com",
     "hours_mf": "Mon – Fri: 10:00 – 20:00",
     "hours_sat": "Sat: 10:00 – 18:00",
-    "hours_sun": "Sun: 12:00 – 18:00"
+    "hours_sun": "Sun: 12:00 – 18:00",
+    "consentShort": "I agree that Legend Fade may store and process the information submitted in this form for the purpose of responding to my enquiry. I have read and accept the",
+    "consentPrivacy": "Privacy Policy",
+    "consentRequired": "Please accept the privacy policy to send a message."
   },
   "booking": {
     "subtitle": "— BOOKING —",

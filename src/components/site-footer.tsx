@@ -59,6 +59,7 @@ export function SiteFooter() {
                 {[
                   { to: "/privacy-policy" as const, label: isFi ? "Tietosuoja" : "Privacy Policy" },
                   { to: "/terms" as const, label: isFi ? "Käyttöehdot" : "Terms of Service" },
+                  { to: "/cookie-policy" as const, label: isFi ? "Evästekäytäntö" : "Cookie Policy" },
                 ].map((l) => (
                   <li key={l.to}>
                     <Link
