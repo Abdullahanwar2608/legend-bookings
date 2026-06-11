@@ -77,42 +77,36 @@
 @layer base {
   * {
     border-color: var(--color-border);
-    /* Every element inherits bright yellow by default */
-    color: inherit;
   }
   html {
     scroll-behavior: smooth;
-    color: #FFE000;
   }
   body {
     background: var(--background);
-    color: #FFE000;
+    color: var(--color-foreground);
     font-family: var(--font-sans);
     min-height: 100vh;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
-    color: #FFE000;
+    color: var(--foreground);
   }
-  p, span, a, li, label, input, textarea, button, select, option,
-  div, section, article, aside, header, footer, nav, main {
+  p, span, a, li, label, input, textarea, button {
     color: inherit;
   }
-  /* Force all form fields to show bright yellow text */
+  /* Force form fields to show bright yellow text */
   input, textarea, select {
     color: #FFE000 !important;
     caret-color: #FFE000;
-    background-color: #1a1a00;
   }
   input::placeholder, textarea::placeholder {
-    color: rgba(255, 224, 0, 0.45) !important;
+    color: rgba(255, 224, 0, 0.4) !important;
   }
-  /* Override any muted/secondary text to be gold-yellow */
+  /* Muted text stays gold-tinted */
   .text-muted-foreground {
-    color: rgba(255, 224, 0, 0.65) !important;
+    color: rgba(255, 224, 0, 0.6) !important;
   }
-  /* Ensure foreground is always yellow */
   .text-foreground {
     color: #FFE000 !important;
   }
