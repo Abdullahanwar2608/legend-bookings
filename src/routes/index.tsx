@@ -155,7 +155,7 @@ function Hero() {
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style={{ color: "#FFE000" }}>
           {t("hero.title")}
         </h1>
-        <p className="text-lg md:text-2xl mb-10 font-light italic" style={{ color: "rgba(255,224,0,0.75)" }}>
+        <p className="text-lg md:text-2xl mb-10 font-light italic" style={{ color: "#FFE000" }}>
           {t("hero.style")}
         </p>
         <Link
@@ -185,7 +185,7 @@ function Services() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             {t("services.title")} <span className="text-gradient-gold">{t("services.titleHighlight")}</span>
           </h2>
-          <p className="text-gold/60 max-w-xl mx-auto">
+          <p className="text-gold max-w-xl mx-auto">
             {t("services.desc")}
           </p>
         </div>
@@ -214,9 +214,9 @@ function Services() {
                   €{s.price}
                 </span>
               </div>
-              <p className="text-sm text-gold/60 mb-4 leading-relaxed">{s.description}</p>
+              <p className="text-sm text-gold mb-4 leading-relaxed">{s.description}</p>
               <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                <span className="text-xs text-gold/50">{s.duration}</span>
+                <span className="text-xs text-gold">{s.duration}</span>
                 <Link
                   to="/book"
                   search={{ service: s.id } as never}
@@ -253,7 +253,7 @@ function Reviews() {
                   <Star key={j} className="h-4 w-4 fill-gold text-gold" />
                 ))}
               </div>
-              <p className="text-gold/70 italic mb-6 leading-relaxed">"{isFi ? r.textFi : r.textEn}"</p>
+              <p className="text-gold italic mb-6 leading-relaxed">"{isFi ? r.textFi : r.textEn}"</p>
               <p className="font-semibold text-sm text-gold">{r.name}</p>
             </div>
           ))}
@@ -313,7 +313,7 @@ function Contact() {
                   href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gold/70 hover:text-gold underline underline-offset-2 transition-colors"
+                  className="text-sm text-gold hover:text-gold underline underline-offset-2 transition-colors"
                 >
                   Everstinkuja 1, 02600, Espoo
                 </a>
@@ -327,7 +327,7 @@ function Contact() {
                 <h3 className="font-semibold mb-1 text-gold">{t("contact.phone")}</h3>
                 <a
                   href="tel:+358449299266"
-                  className="text-sm text-gold/70 hover:text-gold transition-colors"
+                  className="text-sm text-gold hover:text-gold transition-colors"
                 >
                   +358 44 9299266
                 </a>
@@ -341,7 +341,7 @@ function Contact() {
                 <h3 className="font-semibold mb-1 text-gold">{t("contact.email")}</h3>
                 <a
                   href="mailto:legend.service.2810@gmail.com"
-                  className="text-sm text-gold/70 hover:text-gold transition-colors"
+                  className="text-sm text-gold hover:text-gold transition-colors"
                 >
                   legend.service.2810@gmail.com
                 </a>
@@ -353,7 +353,7 @@ function Contact() {
               <Clock className="h-5 w-5 text-gold mt-1 shrink-0" />
               <div>
                 <h3 className="font-semibold mb-1 text-gold">{t("contact.hours")}</h3>
-                <div className="text-sm text-gold/70 space-y-0.5">
+                <div className="text-sm text-gold space-y-0.5">
                   <p>{t("contact.hours_mf")}</p>
                   <p>{t("contact.hours_sat")}</p>
                   <p>{t("contact.hours_sun")}</p>
@@ -373,7 +373,7 @@ function Contact() {
                 <div className="text-center">
                   <MapPin className="h-8 w-8 text-gold mx-auto mb-2" />
                   <p className="text-sm font-medium text-gold">{t("contact.mapView")}</p>
-                  <p className="text-xs text-gold/60 mt-1">Everstinkuja 1, Espoo</p>
+                  <p className="text-xs text-gold mt-1">Everstinkuja 1, Espoo</p>
                 </div>
               </a>
               <div
@@ -422,9 +422,9 @@ function Contact() {
                 onChange={(e) => setConsent(e.target.checked)}
                 className="mt-1 h-4 w-4 shrink-0 cursor-pointer accent-yellow-400"
               />
-              <span className="text-xs leading-relaxed" style={{ color: "rgba(255,224,0,0.6)" }}>
+              <span className="text-xs leading-relaxed" style={{ color: "#FFE000" }}>
                 {t("contact.consentShort")}{" "}
-                <Link to="/privacy-policy" className="underline underline-offset-2 hover:opacity-100" style={{ color: "rgba(255,224,0,0.85)" }}>
+                <Link to="/privacy-policy" className="underline underline-offset-2 hover:opacity-100" style={{ color: "#FFE000" }}>
                   {t("contact.consentPrivacy")}
                 </Link>
                 .

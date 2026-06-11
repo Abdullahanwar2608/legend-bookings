@@ -105,7 +105,7 @@
   }
   /* Muted text stays gold-tinted */
   .text-muted-foreground {
-    color: rgba(255, 224, 0, 0.6) !important;
+    color: #FFE000 !important;
   }
   .text-foreground {
     color: #FFE000 !important;

@@ -19,10 +19,10 @@ export function SiteFooter() {
                 {t("footer.brand")}
               </span>
             </div>
-            <p className="text-xs max-w-xs leading-relaxed" style={{ color: "rgba(255,224,0,0.5)" }}>
+            <p className="text-xs max-w-xs leading-relaxed" style={{ color: "#FFE000" }}>
               {t("footer.about")}
             </p>
-            <p className="text-xs mt-2" style={{ color: "rgba(255,224,0,0.4)" }}>
+            <p className="text-xs mt-2" style={{ color: "#FFE000" }}>
               Everstinkuja 1, 02600 Espoo · +358 44 9299266
             </p>
           </div>
@@ -30,7 +30,7 @@ export function SiteFooter() {
           {/* Links */}
           <div className="flex flex-col sm:flex-row gap-8">
             <div>
-              <p className="text-xs font-semibold tracking-widest mb-3 uppercase" style={{ color: "rgba(255,224,0,0.4)" }}>
+              <p className="text-xs font-semibold tracking-widest mb-3 uppercase" style={{ color: "#FFE000" }}>
                 {isFi ? "Sivusto" : "Site"}
               </p>
               <ul className="space-y-2">
@@ -43,7 +43,7 @@ export function SiteFooter() {
                     <Link
                       to={l.to}
                       className="text-xs transition-opacity hover:opacity-100"
-                      style={{ color: "rgba(255,224,0,0.6)" }}
+                      style={{ color: "#FFE000" }}
                     >
                       {l.label}
                     </Link>
@@ -52,7 +52,7 @@ export function SiteFooter() {
               </ul>
             </div>
             <div>
-              <p className="text-xs font-semibold tracking-widest mb-3 uppercase" style={{ color: "rgba(255,224,0,0.4)" }}>
+              <p className="text-xs font-semibold tracking-widest mb-3 uppercase" style={{ color: "#FFE000" }}>
                 {isFi ? "Juridinen" : "Legal"}
               </p>
               <ul className="space-y-2">
@@ -65,7 +65,7 @@ export function SiteFooter() {
                     <Link
                       to={l.to}
                       className="text-xs transition-opacity hover:opacity-100"
-                      style={{ color: "rgba(255,224,0,0.6)" }}
+                      style={{ color: "#FFE000" }}
                     >
                       {l.label}
                     </Link>
@@ -78,10 +78,10 @@ export function SiteFooter() {
 
         {/* Bottom row */}
         <div className="border-t pt-6 flex flex-col md:flex-row items-center justify-between gap-2" style={{ borderColor: "rgba(255,224,0,0.1)" }}>
-          <p className="text-xs" style={{ color: "rgba(255,224,0,0.35)" }}>
+          <p className="text-xs" style={{ color: "#FFE000" }}>
             © {new Date().getFullYear()} {t("footer.brand")}. {t("footer.rights")}
           </p>
-          <p className="text-xs" style={{ color: "rgba(255,224,0,0.35)" }}>
+          <p className="text-xs" style={{ color: "#FFE000" }}>
             {isFi ? "Tehty Espoossa 🇫🇮" : "Made in Espoo 🇫🇮"}
           </p>
         </div>

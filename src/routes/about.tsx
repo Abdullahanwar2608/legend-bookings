@@ -83,13 +83,13 @@ function AboutPage() {
             backgroundImage: "radial-gradient(ellipse at 50% 0%, rgba(255,224,0,0.07) 0%, transparent 70%)"
           }} />
           <div className="relative container mx-auto max-w-3xl">
-            <p className="tracking-[0.4em] text-xs mb-4 opacity-60">
+            <p className="tracking-[0.4em] text-xs mb-4" style={{ color: "#FFE000" }}>
               {isFi ? "— TIETOA MEISTÄ —" : "— ABOUT LEGEND FADE —"}
             </p>
             <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: "#FFE000" }}>
               Legend Fade
             </h1>
-            <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto" style={{ color: "rgba(255,224,0,0.75)" }}>
+            <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto" style={{ color: "#FFE000" }}>
               {isFi
                 ? "Legend Fadessa kyse on paljon enemmästä kuin pelkkästä hiustenleikkauksesta – kyse on itseluottamuksesta, tyylistä ja hyvästä fiiliksestä. Tarjoamme siistit leikkaukset, tarkat häivytykset ja ensiluokkaisen kokemuksen joka kerta."
                 : "At Legend Fade, it\u2019s more than just a haircut \u2013 it\u2019s about confidence, style and good vibes. We deliver clean cuts, sharp fades and a top-notch experience every time."}
@@ -104,7 +104,7 @@ function AboutPage() {
               {STATS.map((s, i) => (
                 <div key={i} className="rounded-2xl border p-6 text-center" style={{ borderColor: "rgba(255,224,0,0.2)", background: "#0a0a00" }}>
                   <p className="font-display text-4xl font-bold mb-2" style={{ color: "#FFE000" }}>{s.value}</p>
-                  <p className="text-xs opacity-60">{isFi ? s.labelFi : s.labelEn}</p>
+                  <p className="text-xs" style={{ color: "#FFE000" }}>{isFi ? s.labelFi : s.labelEn}</p>
                 </div>
               ))}
             </div>
@@ -121,7 +121,7 @@ function AboutPage() {
                   {isFi ? "Tarinamme" : "Our Story"}
                 </h2>
               </div>
-              <div className="space-y-4 text-sm leading-relaxed" style={{ color: "rgba(255,224,0,0.75)" }}>
+              <div className="space-y-4 text-sm leading-relaxed" style={{ color: "#FFE000" }}>
                 {isFi ? (
                   <>
                     <p>Legend Fade syntyi yhdestä yksinkertaisesta ajatuksesta: jokainen mies ansaitsee ensiluokkaisen parturikokemuksen. Espoo ansaitsee parturin, joka ymmärtää modernin miehen tarpeet.</p>
@@ -155,7 +155,7 @@ function AboutPage() {
                   <h3 className="font-semibold text-base mb-3" style={{ color: "#FFE000" }}>
                     {isFi ? v.titleFi : v.titleEn}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,224,0,0.65)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "#FFE000" }}>
                     {isFi ? v.bodyFi : v.bodyEn}
                   </p>
                 </div>
@@ -170,12 +170,12 @@ function AboutPage() {
             <div className="flex justify-center gap-1 mb-4">
               {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" style={{ color: "#FFE000" }} />)}
             </div>
-            <p className="text-lg italic mb-2" style={{ color: "rgba(255,224,0,0.8)" }}>
+            <p className="text-lg italic mb-2" style={{ color: "#FFE000" }}>
               {isFi
                 ? "\"Paras hiustenleikkaus vuosiin. Huomio yksityiskohtiin on vertaansa vailla. Aidosti ensiluokkainen kokemus.\""
                 : "\"Best haircut I've had in years. The attention to detail is unmatched. Truly a premium experience.\""}
             </p>
-            <p className="text-sm opacity-50">— Marcus T.</p>
+            <p className="text-sm" style={{ color: "#FFE000" }}>— Marcus T.</p>
           </div>
         </section>
 
@@ -185,7 +185,7 @@ function AboutPage() {
             <div className="rounded-2xl border p-8 mb-8" style={{ borderColor: "rgba(255,224,0,0.25)", background: "#0a0a00" }}>
               <MapPin className="h-8 w-8 mx-auto mb-4" style={{ color: "#FFE000" }} />
               <p className="font-semibold mb-1" style={{ color: "#FFE000" }}>Everstinkuja 1, 02600 Espoo</p>
-              <div className="text-sm mt-3 space-y-0.5" style={{ color: "rgba(255,224,0,0.6)" }}>
+              <div className="text-sm mt-3 space-y-0.5" style={{ color: "#FFE000" }}>
                 <p>{isFi ? "Ma – Pe: 10:00 – 20:00" : "Mon – Fri: 10:00 – 20:00"}</p>
                 <p>{isFi ? "La: 10:00 – 18:00" : "Sat: 10:00 – 18:00"}</p>
                 <p>{isFi ? "Su: 12:00 – 18:00" : "Sun: 12:00 – 18:00"}</p>

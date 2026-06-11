@@ -50,7 +50,7 @@ export function SiteHeader() {
             <a
               key={l.href}
               href={l.href}
-              className="text-gold/70 hover:text-gold transition-colors font-medium"
+              className="text-gold hover:text-gold transition-colors font-medium"
             >
               {l.label}
             </a>
@@ -86,7 +86,7 @@ export function SiteHeader() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="py-3 text-base text-gold/80 hover:text-gold transition-colors border-b border-gold/10 font-medium"
+              className="py-3 text-base text-gold hover:text-gold transition-colors border-b border-gold/10 font-medium"
             >
               {l.label}
             </a>
