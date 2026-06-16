@@ -209,12 +209,12 @@ function Services() {
                 </div>
               )}
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-semibold text-gold">{s.name}</h3>
+                <h3 className="text-xl font-semibold text-gold">{t(`serviceItems.${s.name}.name`, { defaultValue: s.name })}</h3>
                 <span className="text-2xl font-display text-gradient-gold font-bold">
                   €{s.price}
                 </span>
               </div>
-              <p className="text-sm text-gold mb-4 leading-relaxed">{s.description}</p>
+              <p className="text-sm text-gold mb-4 leading-relaxed">{t(`serviceItems.${s.name}.desc`, { defaultValue: s.description })}</p>
               <div className="flex items-center justify-between pt-4 border-t border-border/50">
                 <span className="text-xs text-gold">{s.duration}</span>
                 <Link

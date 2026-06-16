@@ -90,5 +90,27 @@
     "rights": "Kaikki oikeudet pidätetään.",
     "about": "Ensiluokkaiset parturi- ja grooming-palvelut Espoossa, Suomessa.",
     "brand": "Legend Fade"
+  },
+  "serviceItems": {
+    "Haircut": {
+      "name": "Miesten hiustenleikkaus",
+      "desc": "Ammattimainen hiustenleikkaus, joka räätälöidään tyyliisi ja kasvonpiirteisiisi sopivaksi. Tarkat linjat, modernit tekniikat ja huolellinen viimeistely. Lähde tyytyväisenä, itsevarmana ja viimeistellyn näköisenä."
+    },
+    "Beard Trim": {
+      "name": "Parran siistiminen ja muotoilu",
+      "desc": "Pidä partasi siistinä, terävänä ja huoliteltuna. Tarkka muotoilu kasvonpiirteidesi mukaan. Täydellinen valinta ammattimaisen ja tyylikkään ilmeen ylläpitämiseen."
+    },
+    "Shave": {
+      "name": "Parranajo",
+      "desc": "Koe perinteinen tarkka parranajo laadukkailla tuotteilla. Lämmin pyyhe valmistaa ihon ja viimeistely tehdään huolellisesti partaveitsellä. Rentoudu ja nauti ensiluokkaisesta hoitokokemuksesta."
+    },
+    "Kids Cut": {
+      "name": "Lasten hiustenleikkaus",
+      "desc": "Hauskat, mukavat ja tyylikkäät hiustenleikkaukset lapsille. Ystävällinen palvelu, joka tekee käynnistä rennon ja miellyttävän. Lapset 1-9 vuotta: 10 € | Yli 10-vuotiaat: 25 €."
+    },
+    "Haircut & Beard": {
+      "name": "Hiustenleikkaus & Parta",
+      "desc": "Ammattimainen hiustenleikkaus ja parran muotoilu. Täydellinen paketti tyylikkääseen ilmeeseen."
+    }
   }
 }

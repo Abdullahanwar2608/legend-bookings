@@ -90,5 +90,27 @@
     "rights": "All rights reserved.",
     "about": "Premium grooming services in Espoo, Finland.",
     "brand": "Legend Fade"
+  },
+  "serviceItems": {
+    "Haircut": {
+      "name": "Men Haircut",
+      "desc": "A professional haircut tailored to your style and face shape. Clean lines, modern techniques, and attention to detail. Leave looking sharp, confident, and refreshed."
+    },
+    "Beard Trim": {
+      "name": "Beard Trim & Shape",
+      "desc": "Keep your beard looking clean, sharp, and well-groomed. Precision shaping tailored to your facial features. Perfect for maintaining a professional and stylish appearance."
+    },
+    "Shave": {
+      "name": "Shave",
+      "desc": "Experience a traditional close shave with premium products. Hot towel preparation and smooth razor finish. Relax, unwind, and enjoy the ultimate grooming experience."
+    },
+    "Kids Cut": {
+      "name": "Kids Haircut",
+      "desc": "Fun, comfortable, and stylish haircuts for children. Gentle service designed to make kids feel relaxed. Kids 1-9 years: €10 | 10+ years: €25."
+    },
+    "Haircut & Beard": {
+      "name": "Haircut & Beard",
+      "desc": "A professional haircut paired with precision beard shaping. The ultimate grooming package."
+    }
   }
 }
