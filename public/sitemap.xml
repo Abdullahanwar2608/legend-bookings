@@ -4,61 +4,61 @@
 
   <!-- Home -->
   <url>
-    <loc>https://legend-bookings.vercel.app/</loc>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://legend-bookings.vercel.app/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://legend-bookings.vercel.app/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://legend-bookings.vercel.app/"/>
-    <lastmod>2026-06-10</lastmod>
+    <loc>https://www.legendfade.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.legendfade.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.legendfade.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.legendfade.com/"/>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Book Appointment -->
   <url>
-    <loc>https://legend-bookings.vercel.app/book</loc>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://legend-bookings.vercel.app/book"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://legend-bookings.vercel.app/book"/>
-    <lastmod>2026-06-10</lastmod>
+    <loc>https://www.legendfade.com/book</loc>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.legendfade.com/book"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.legendfade.com/book"/>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- About -->
   <url>
-    <loc>https://legend-bookings.vercel.app/about</loc>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://legend-bookings.vercel.app/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://legend-bookings.vercel.app/about"/>
-    <lastmod>2026-06-10</lastmod>
+    <loc>https://www.legendfade.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.legendfade.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.legendfade.com/about"/>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Privacy Policy -->
   <url>
-    <loc>https://legend-bookings.vercel.app/privacy-policy</loc>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://legend-bookings.vercel.app/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://legend-bookings.vercel.app/privacy-policy"/>
-    <lastmod>2026-06-10</lastmod>
+    <loc>https://www.legendfade.com/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.legendfade.com/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.legendfade.com/privacy-policy"/>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <!-- Terms of Service -->
   <url>
-    <loc>https://legend-bookings.vercel.app/terms</loc>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://legend-bookings.vercel.app/terms"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://legend-bookings.vercel.app/terms"/>
-    <lastmod>2026-06-10</lastmod>
+    <loc>https://www.legendfade.com/terms</loc>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.legendfade.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.legendfade.com/terms"/>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <!-- Cookie Policy -->
   <url>
-    <loc>https://legend-bookings.vercel.app/cookie-policy</loc>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://legend-bookings.vercel.app/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://legend-bookings.vercel.app/cookie-policy"/>
-    <lastmod>2026-06-10</lastmod>
+    <loc>https://www.legendfade.com/cookie-policy</loc>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.legendfade.com/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.legendfade.com/cookie-policy"/>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

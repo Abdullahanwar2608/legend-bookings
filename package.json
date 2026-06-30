@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "check-links": "linkinator https://legend-bookings.vercel.app --recurse",
+    "check-links": "linkinator https://www.legendfade.com --recurse",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
