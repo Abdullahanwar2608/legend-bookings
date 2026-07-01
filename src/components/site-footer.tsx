@@ -22,8 +22,11 @@ export function SiteFooter() {
             <p className="text-xs max-w-xs leading-relaxed" style={{ color: "#FFE000" }}>
               {t("footer.about")}
             </p>
-            <p className="text-xs mt-2" style={{ color: "#FFE000" }}>
+            <p className="text-xs mt-2" style={{ color: "rgba(255,224,0,0.5)" }}>
               Everstinkuja 1, 02600 Espoo · +358 44 9299266
+            </p>
+            <p className="text-xs mt-1" style={{ color: "rgba(255,224,0,0.4)" }}>
+              {isFi ? "Y-tunnus" : "Business ID"}: 3416230-7
             </p>
           </div>
 

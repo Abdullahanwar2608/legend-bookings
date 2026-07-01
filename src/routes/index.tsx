@@ -81,6 +81,7 @@ const JSON_LD = {
   url: "https://www.legendfade.com",
   telephone: "+358449299266",
   email: "legend.service.2810@gmail.com",
+  taxID: "3416230-7",
   priceRange: "€€",
   description: "Premium barbershop in Espoo, Finland. Haircuts, beard trims, shaves and kids cuts.",
   address: {

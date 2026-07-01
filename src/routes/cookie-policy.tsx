@@ -230,6 +230,9 @@ function CookiePolicyPage() {
               </p>
               <p>Everstinkuja 1, 02600 Espoo, Finland</p>
               <p>+358 44 9299266</p>
+              <p style={{ color: "rgba(255,224,0,0.55)" }}>
+                {isFi ? "Y-tunnus" : "Business ID"}: 3416230-7
+              </p>
               <a
                 href="mailto:legend.service.2810@gmail.com"
                 className="hover:opacity-100 opacity-75 underline underline-offset-2"
